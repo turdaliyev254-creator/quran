@@ -1,0 +1,127 @@
+[
+  {
+    "id": "alifbo",
+    "sarlavha": "Arab alifbosi",
+    "daraja": "Boshlang'ich",
+    "kirish": "Arab alifbosida 28 ta harf bor. Barcha harflar undosh tovushlarni bildiradi, unlilar esa alohida belgilar (harakatlar) yordamida ifodalanadi. Yozuv o'ngdan chapga yoziladi.",
+    "harflar": [
+      { "harf": "ا", "nomi": "alif", "talaffuz": "cho'ziq \"o\" yoki tovushsiz tayanch harf" },
+      { "harf": "ب", "nomi": "bo'", "talaffuz": "b" },
+      { "harf": "ت", "nomi": "to'", "talaffuz": "t" },
+      { "harf": "ث", "nomi": "so'", "talaffuz": "ingliz tilidagi \"th\" ga yaqin" },
+      { "harf": "ج", "nomi": "jim", "talaffuz": "j" },
+      { "harf": "ح", "nomi": "ha", "talaffuz": "tomoqdan chiqadigan qattiq \"h\"" },
+      { "harf": "خ", "nomi": "xo'", "talaffuz": "x" },
+      { "harf": "د", "nomi": "dol", "talaffuz": "d" },
+      { "harf": "ذ", "nomi": "zol", "talaffuz": "yumshoq \"z\" (th ovozli)" },
+      { "harf": "ر", "nomi": "ro'", "talaffuz": "titroq \"r\"" },
+      { "harf": "ز", "nomi": "zay", "talaffuz": "z" },
+      { "harf": "س", "nomi": "sin", "talaffuz": "s" },
+      { "harf": "ش", "nomi": "shin", "talaffuz": "sh" },
+      { "harf": "ص", "nomi": "sod", "talaffuz": "qattiq \"s\"" },
+      { "harf": "ض", "nomi": "dod", "talaffuz": "qattiq \"d\"" },
+      { "harf": "ط", "nomi": "to'", "talaffuz": "qattiq \"t\"" },
+      { "harf": "ظ", "nomi": "zo'", "talaffuz": "qattiq \"z\"" },
+      { "harf": "ع", "nomi": "ayn", "talaffuz": "tomoqdan chiqadigan o'ziga xos tovush" },
+      { "harf": "غ", "nomi": "g'ayn", "talaffuz": "g'" },
+      { "harf": "ف", "nomi": "fa", "talaffuz": "f" },
+      { "harf": "ق", "nomi": "qof", "talaffuz": "chuqur \"q\"" },
+      { "harf": "ك", "nomi": "kof", "talaffuz": "k" },
+      { "harf": "ل", "nomi": "lom", "talaffuz": "l" },
+      { "harf": "م", "nomi": "mim", "talaffuz": "m" },
+      { "harf": "ن", "nomi": "nun", "talaffuz": "n" },
+      { "harf": "و", "nomi": "vov", "talaffuz": "v yoki cho'ziq \"u\"" },
+      { "harf": "ه", "nomi": "ha", "talaffuz": "yumshoq \"h\"" },
+      { "harf": "ي", "nomi": "yo'", "talaffuz": "y yoki cho'ziq \"i\"" }
+    ]
+  },
+  {
+    "id": "harakatlar",
+    "sarlavha": "Harakatlar (unli belgilar)",
+    "daraja": "Boshlang'ich",
+    "kirish": "Arab yozuvida unli tovushlar harf ustiga yoki ostiga qo'yiladigan maxsus belgilar — harakatlar orqali ifodalanadi.",
+    "boblar": [
+      { "sarlavha": "Fatha ( ََ )", "matn": "Harf ustiga qo'yiladigan qiyshiq chiziqcha, \"a\" tovushini bildiradi. Masalan: بَ — \"ba\"." },
+      { "sarlavha": "Kasra ( ِِ )", "matn": "Harf ostiga qo'yiladigan chiziqcha, \"i\" tovushini bildiradi. Masalan: بِ — \"bi\"." },
+      { "sarlavha": "Damma ( ُُ )", "matn": "Harf ustiga qo'yiladigan kichik vov belgisi, \"u\" tovushini bildiradi. Masalan: بُ — \"bu\"." },
+      { "sarlavha": "Sukun ( ْْ )", "matn": "Harfda unli tovush yo'qligini bildiradi, ya'ni harf tovushsiz (jarangsiz) o'qiladi. Masalan: بْ — \"b\"." },
+      { "sarlavha": "Shadda ( ّّ )", "matn": "Harf ikki marta, qo'shaloq talaffuz qilinishini bildiradi. Masalan: بّ — \"bb\"." }
+    ]
+  },
+  {
+    "id": "olmoshlar",
+    "sarlavha": "Shaxs olmoshlari",
+    "daraja": "Boshlang'ich",
+    "kirish": "Arab tilidagi asosiy shaxs olmoshlari bilan tanishamiz.",
+    "jadval": [
+      { "arabcha": "أَنَا", "ozbekcha": "men" },
+      { "arabcha": "أَنْتَ", "ozbekcha": "sen (erkak)" },
+      { "arabcha": "أَنْتِ", "ozbekcha": "sen (ayol)" },
+      { "arabcha": "هُوَ", "ozbekcha": "u (erkak)" },
+      { "arabcha": "هِيَ", "ozbekcha": "u (ayol)" },
+      { "arabcha": "نَحْنُ", "ozbekcha": "biz" },
+      { "arabcha": "أَنْتُمْ", "ozbekcha": "sizlar (erkaklar)" },
+      { "arabcha": "هُمْ", "ozbekcha": "ular (erkaklar)" }
+    ]
+  },
+  {
+    "id": "salomlashuv",
+    "sarlavha": "Salomlashuv iboralari",
+    "daraja": "Boshlang'ich",
+    "kirish": "Kundalik muloqotda ishlatiladigan asosiy salomlashuv iboralari.",
+    "jadval": [
+      { "arabcha": "السَّلَامُ عَلَيْكُمْ", "ozbekcha": "Sizga tinchlik-omonlik bo'lsin (salom)" },
+      { "arabcha": "وَعَلَيْكُمُ السَّلَامُ", "ozbekcha": "Sizga ham tinchlik-omonlik bo'lsin (javob)" },
+      { "arabcha": "كَيْفَ حَالُكَ؟", "ozbekcha": "Ahvoling qalay? (erkakka)" },
+      { "arabcha": "بِخَيْرٍ، الْحَمْدُ لِلَّهِ", "ozbekcha": "Yaxshi, Allohga hamdu sanolar bo'lsin" },
+      { "arabcha": "شُكْرًا", "ozbekcha": "Rahmat" },
+      { "arabcha": "مِنْ فَضْلِكَ", "ozbekcha": "Iltimos (marhamat qilib)" },
+      { "arabcha": "مَعَ السَّلَامَةِ", "ozbekcha": "Xayr, omon bo'ling" }
+    ]
+  },
+  {
+    "id": "raqamlar",
+    "sarlavha": "Raqamlar (1-10)",
+    "daraja": "Boshlang'ich",
+    "kirish": "Arabcha 1 dan 10 gacha bo'lgan raqamlar.",
+    "jadval": [
+      { "arabcha": "وَاحِد", "ozbekcha": "1 — bir" },
+      { "arabcha": "اِثْنَان", "ozbekcha": "2 — ikki" },
+      { "arabcha": "ثَلَاثَة", "ozbekcha": "3 — uch" },
+      { "arabcha": "أَرْبَعَة", "ozbekcha": "4 — to'rt" },
+      { "arabcha": "خَمْسَة", "ozbekcha": "5 — besh" },
+      { "arabcha": "سِتَّة", "ozbekcha": "6 — olti" },
+      { "arabcha": "سَبْعَة", "ozbekcha": "7 — yetti" },
+      { "arabcha": "ثَمَانِيَة", "ozbekcha": "8 — sakkiz" },
+      { "arabcha": "تِسْعَة", "ozbekcha": "9 — to'qqiz" },
+      { "arabcha": "عَشَرَة", "ozbekcha": "10 — o'n" }
+    ]
+  },
+  {
+    "id": "oila",
+    "sarlavha": "Oilaviy so'zlar",
+    "daraja": "Boshlang'ich",
+    "kirish": "Oila a'zolarini bildiruvchi asosiy so'zlar.",
+    "jadval": [
+      { "arabcha": "أَب", "ozbekcha": "ota" },
+      { "arabcha": "أُمّ", "ozbekcha": "ona" },
+      { "arabcha": "اِبْن", "ozbekcha": "o'g'il" },
+      { "arabcha": "بِنْت", "ozbekcha": "qiz" },
+      { "arabcha": "أَخ", "ozbekcha": "aka/uka" },
+      { "arabcha": "أُخْت", "ozbekcha": "opa/singil" },
+      { "arabcha": "جَدّ", "ozbekcha": "bobo" },
+      { "arabcha": "جَدَّة", "ozbekcha": "buvi" }
+    ]
+  },
+  {
+    "id": "jumla-tuzilishi",
+    "sarlavha": "Oddiy jumla tuzilishi",
+    "daraja": "O'rta",
+    "kirish": "Arab tilida ismli jumla (al-jumlatul-ismiyya) mubtado (ega) va xabar (kesim)dan tashkil topadi.",
+    "boblar": [
+      { "sarlavha": "Ismli jumla", "matn": "Masalan: البَيْتُ كَبِيرٌ — \"Uy katta\". Bu yerda البَيْتُ (uy) — mubtado, كَبِيرٌ (katta) — xabar." },
+      { "sarlavha": "Fe'lli jumla", "matn": "Fe'l bilan boshlanadigan jumla al-jumlatul-fi'liyya deyiladi. Masalan: ذَهَبَ الْوَلَدُ إِلَى الْمَدْرَسَةِ — \"Bola maktabga bordi\"." },
+      { "sarlavha": "Bog'lovchi bo'lmasligi", "matn": "Arab tilida hozirgi zamonda \"bo'lmoq\" fe'li (masalan \"u shifokordir\") odatda alohida so'z bilan ifodalanmaydi, jumla to'g'ridan-to'g'ri ot va sifat bilan tuziladi." }
+    ]
+  }
+]

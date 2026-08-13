@@ -1,0 +1,185 @@
+[
+  {
+    "id": 1,
+    "kategoriya": "Qur'on",
+    "savol": "Qur'oni Karimda nechta sura bor?",
+    "variantlar": ["110", "114", "124", "144"],
+    "togri": 1
+  },
+  {
+    "id": 2,
+    "kategoriya": "Qur'on",
+    "savol": "Qur'on nechta juzga bo'lingan?",
+    "variantlar": ["20", "24", "30", "40"],
+    "togri": 2
+  },
+  {
+    "id": 3,
+    "kategoriya": "Qur'on",
+    "savol": "Qur'onda eng uzun sura qaysi?",
+    "variantlar": ["Ol Imron", "Baqara", "Niso", "Moida"],
+    "togri": 1
+  },
+  {
+    "id": 4,
+    "kategoriya": "Qur'on",
+    "savol": "Qur'onda eng qisqa sura qaysi?",
+    "variantlar": ["Ixlos", "Nasr", "Kavsar", "Asr"],
+    "togri": 2
+  },
+  {
+    "id": 5,
+    "kategoriya": "Qur'on",
+    "savol": "Birinchi bo'lib nozil qilingan oyatlar qaysi surada?",
+    "variantlar": ["Fotiha", "Alaq", "Muddassir", "Qadr"],
+    "togri": 1
+  },
+  {
+    "id": 6,
+    "kategoriya": "Qur'on",
+    "savol": "Qur'on qaysi tilda nozil qilingan?",
+    "variantlar": ["Fors tilida", "Turk tilida", "Arab tilida", "Urdu tilida"],
+    "togri": 2
+  },
+  {
+    "id": 7,
+    "kategoriya": "Qur'on",
+    "savol": "\"Bismillah\" jumlasi Qur'onda qaysi suradan tashqari barcha sura boshida keltiriladi?",
+    "variantlar": ["Ixlos", "Tavba", "Nas", "Kavsar"],
+    "togri": 1
+  },
+  {
+    "id": 8,
+    "kategoriya": "Aqida",
+    "savol": "Islomning asosiy ruknlari (arkoni) nechta?",
+    "variantlar": ["3", "4", "5", "6"],
+    "togri": 2
+  },
+  {
+    "id": 9,
+    "kategoriya": "Aqida",
+    "savol": "\"Tavhid\" tushunchasi nimani anglatadi?",
+    "variantlar": [
+      "Namoz o'qish tartibi",
+      "Allohning yagonaligiga ishonish",
+      "Ro'za tutish qoidasi",
+      "Haj safari marosimi"
+    ],
+    "togri": 1
+  },
+  {
+    "id": 10,
+    "kategoriya": "Aqida",
+    "savol": "Qur'onni Allohdan Muhammad alayhissalomga qaysi farishta yetkazgan?",
+    "variantlar": ["Isrofil", "Mikoil", "Jabroil", "Azroil"],
+    "togri": 2
+  },
+  {
+    "id": 11,
+    "kategoriya": "Ibodat",
+    "savol": "Bir kecha-kunduzda nechta farz namoz o'qiladi?",
+    "variantlar": ["3", "4", "5", "6"],
+    "togri": 2
+  },
+  {
+    "id": 12,
+    "kategoriya": "Ibodat",
+    "savol": "Kundalik beshta farz namozdan birinchisi qaysi?",
+    "variantlar": ["Peshin", "Bomdod", "Shom", "Xufton"],
+    "togri": 1
+  },
+  {
+    "id": 13,
+    "kategoriya": "Ibodat",
+    "savol": "Musulmonlar namoz o'qiganda qaysi tomonga yuzlanadi?",
+    "variantlar": ["Madina", "Quddus", "Makka (Ka'ba)", "Damashq"],
+    "togri": 2
+  },
+  {
+    "id": 14,
+    "kategoriya": "Ibodat",
+    "savol": "Ramazon oyida musulmonlar qanday ibodatni ado etadi?",
+    "variantlar": ["Haj", "Ro'za", "Zakot", "Qurbonlik"],
+    "togri": 1
+  },
+  {
+    "id": 15,
+    "kategoriya": "Ibodat",
+    "savol": "Haj safari hijriy taqvimning qaysi oyida amalga oshiriladi?",
+    "variantlar": ["Ramazon", "Shavvol", "Zul-hijja", "Muharram"],
+    "togri": 2
+  },
+  {
+    "id": 16,
+    "kategoriya": "Ibodat",
+    "savol": "\"Tahorat\" so'zi ma'no jihatidan nimani anglatadi?",
+    "variantlar": ["Ibodat", "Poklanish", "Sadaqa", "Sabr"],
+    "togri": 1
+  },
+  {
+    "id": 17,
+    "kategoriya": "Tarix",
+    "savol": "Muhammad alayhissalom qaysi shaharda tug'ilgan?",
+    "variantlar": ["Madina", "Makka", "Quddus", "Damashq"],
+    "togri": 1
+  },
+  {
+    "id": 18,
+    "kategoriya": "Tarix",
+    "savol": "Payg'ambarimizning hijrati qaysi shaharga bo'lgan?",
+    "variantlar": ["Makka", "Toif", "Madina", "Basra"],
+    "togri": 2
+  },
+  {
+    "id": 19,
+    "kategoriya": "Tarix",
+    "savol": "Qur'on necha yil davomida bosqichma-bosqich nozil bo'lgan (taxminan)?",
+    "variantlar": ["10 yil", "13 yil", "23 yil", "33 yil"],
+    "togri": 2
+  },
+  {
+    "id": 20,
+    "kategoriya": "Tarix",
+    "savol": "\"Sahih al-Buxoriy\" hadis to'plamini kim tuzgan?",
+    "variantlar": ["Imom Muslim", "Imom Termiziy", "Imom Buxoriy", "Imom Nasoiy"],
+    "togri": 2
+  },
+  {
+    "id": 21,
+    "kategoriya": "Umumiy",
+    "savol": "Qur'onni yoddan biladigan kishi qanday ataladi?",
+    "variantlar": ["Muftiy", "Hofiz", "Imom", "Muazzin"],
+    "togri": 1
+  },
+  {
+    "id": 22,
+    "kategoriya": "Umumiy",
+    "savol": "\"Iymon\" so'zi ma'no jihatidan nimani bildiradi?",
+    "variantlar": ["Sabr", "Shukr", "Ishonch, e'tiqod", "Kechirim"],
+    "togri": 2
+  },
+  {
+    "id": 23,
+    "kategoriya": "Umumiy",
+    "savol": "Musulmonlarning ikkita asosiy diniy bayrami qaysilar?",
+    "variantlar": [
+      "Navro'z va Mehrjon",
+      "Ramazon hayiti va Qurbon hayiti",
+      "Mavlid va Isro-Me'roj",
+      "Ashura va Barot"
+    ],
+    "togri": 1
+  },
+  {
+    "id": 24,
+    "kategoriya": "Umumiy",
+    "savol": "Ezon (azon) ning asosiy vazifasi nima?",
+    "variantlar": [
+      "Ro'za og'zini ochish belgisi",
+      "Namoz vaqti kirganini e'lon qilish",
+      "Haj marosimini boshlash",
+      "Juma xutbasini o'qish"
+    ],
+    "togri": 1
+  }
+]

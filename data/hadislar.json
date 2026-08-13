@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "mavzu": "Niyat",
+    "arabcha": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
+    "matn": "Amallar faqat niyatlarga qarabdir. Har bir kishiga faqat niyat qilgan narsasi bordir.",
+    "manba": "Buxoriy va Muslim rivoyati"
+  },
+  {
+    "id": 2,
+    "mavzu": "Axloq",
+    "arabcha": "الدِّينُ النَّصِيحَةُ",
+    "matn": "Din — nasihatdir (samimiyatdir).",
+    "manba": "Muslim rivoyati"
+  },
+  {
+    "id": 3,
+    "mavzu": "Qo'shnichilik",
+    "matn": "Kim Allohga va oxirat kuniga imon keltirgan bo'lsa, qo'shnisiga yaxshilik qilsin.",
+    "manba": "Buxoriy va Muslim rivoyati"
+  },
+  {
+    "id": 4,
+    "mavzu": "So'z va til",
+    "matn": "Kim Allohga va oxirat kuniga imon keltirgan bo'lsa, yaxshi so'z aytsin yoki jim tursin.",
+    "manba": "Buxoriy va Muslim rivoyati"
+  },
+  {
+    "id": 5,
+    "mavzu": "Sadaqa",
+    "matn": "Tabassuming — birodaring yuziga qarab kulishing — sen uchun sadaqadir.",
+    "manba": "Termiziy rivoyati"
+  },
+  {
+    "id": 6,
+    "mavzu": "Poklik",
+    "matn": "Poklik — imonning yarmidir.",
+    "manba": "Muslim rivoyati"
+  },
+  {
+    "id": 7,
+    "mavzu": "Qur'on",
+    "matn": "Sizlarning eng yaxshingiz — Qur'onni o'rgangan va o'rgatgan kishidir.",
+    "manba": "Buxoriy rivoyati"
+  },
+  {
+    "id": 8,
+    "mavzu": "Ota-ona",
+    "matn": "Jannat — onalarning oyoqlari ostidadir.",
+    "manba": "Nasoiy va boshqalar rivoyati"
+  },
+  {
+    "id": 9,
+    "mavzu": "Musulmonlik",
+    "matn": "Haqiqiy musulmon — qo'li va tilidan boshqa musulmonlar omon qolgan kishidir.",
+    "manba": "Buxoriy rivoyati"
+  },
+  {
+    "id": 10,
+    "mavzu": "Ilm",
+    "matn": "Ilm izlash — har bir musulmon uchun farzdir.",
+    "manba": "Ibn Moja rivoyati"
+  },
+  {
+    "id": 11,
+    "mavzu": "Sabr",
+    "matn": "Ajablanarlidir mo'minning ishi! Uning barcha ishi yaxshilikdir. Bu esa mo'mindan boshqa hech kimga nasib etmaydi: unga xursandchilik yetsa shukr qiladi, bu esa u uchun yaxshilik bo'ladi; unga qiyinchilik yetsa sabr qiladi, bu ham u uchun yaxshilik bo'ladi.",
+    "manba": "Muslim rivoyati"
+  },
+  {
+    "id": 12,
+    "mavzu": "Kechirimlilik",
+    "matn": "Kim odamlarni kechirmasa, Alloh ham uni kechirmaydi.",
+    "manba": "Termiziy rivoyati"
+  },
+  {
+    "id": 13,
+    "mavzu": "Do'stlik",
+    "matn": "Kishi do'stining dinida bo'ladi, shuning uchun har biringiz kim bilan do'stlashayotganiga e'tibor bersin.",
+    "manba": "Termiziy va Abu Dovud rivoyati"
+  },
+  {
+    "id": 14,
+    "mavzu": "Namoz",
+    "matn": "Banda bilan shirk (Allohga sherik qo'shish) o'rtasida namozni tark etish bor.",
+    "manba": "Muslim rivoyati"
+  },
+  {
+    "id": 15,
+    "mavzu": "Vaqt",
+    "matn": "Ikki ne'mat borki, ko'p odamlar ularda aldangandir: sog'lik va bo'sh vaqt.",
+    "manba": "Buxoriy rivoyati"
+  },
+  {
+    "id": 16,
+    "mavzu": "Sadaqa",
+    "matn": "Sadaqa mol-mulkni kamaytirmaydi.",
+    "manba": "Muslim rivoyati"
+  }
+]
