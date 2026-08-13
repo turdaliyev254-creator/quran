@@ -24,7 +24,7 @@ npm run dev
 | Hadislar, Arab tili (yozma darslar), Tajvid, Ruhiyat, Viktorina | `data/*.json` — qo'lda kuratsiya qilingan, kengaytirish mumkin |
 | Arab tili video darslari (129 ta) | Ibrat Farzandlari YouTube kanali, `data/arab-tili-videolar.json` |
 | Islomiy videolar (Siyrat seriali, Jannat onalari) | Towards Eternity - O'zbek YouTube kanali, `data/islomiy-videolar.json` |
-| Xayriya kategoriyalari | `data/xayriya.json` — to'lov Payme/Click orqali (pastga qarang) |
+| AI qidiruv | Gemini API, faqat Qur'on va sahih hadis asosida javob berish uchun cheklangan (pastga qarang) |
 
 Yangi kontent qo'shish uchun tegishli `data/*.json` faylini tahrirlang — sahifalar avtomatik
 yangilanadi.
@@ -56,35 +56,27 @@ avtomatik qo'shiladi. So'ng `ADMIN_PASSWORD`ni qo'lda qo'shing va qayta deploy q
 Bu o'zgaruvchilar sozlanmagan bo'lsa, dashboard "Baza ulanmagan" ogohlantirishi bilan 0
 ko'rsatadi — ilovaning qolgan qismiga ta'sir qilmaydi.
 
-## Xayriya bo'limi (Payme / Click)
+## Xayriya bo'limi
 
-`/xayriya` sahifasida kategoriyalar (masjidlar, shifoxonalar, maktablar va h.k.), summa tanlash
-va Payme/Click orqali to'lash imkoniyati bor. Ishlashi uchun quyidagi muhit o'zgaruvchilarini
-sozlang:
+`/xayriya` sahifasida loyihaning rivojiga xayriya qilish uchun karta raqami ko'rsatiladi
+(nusxalash tugmasi bilan). To'lov API integratsiyasi yo'q — foydalanuvchi kartaga qo'lda pul
+o'tkazadi. Karta raqami va egasi nomini o'zgartirish uchun
+[app/xayriya/page.tsx](app/xayriya/page.tsx) faylini tahrirlang.
+
+## AI qidiruv (Gemini)
+
+`/ai-qidiruv` sahifasida foydalanuvchi diniy savol yozadi, javob esa **faqat Qur'on va sahih
+hadislarga asoslanib** beriladi (`lib/gemini.ts` dagi system instruction shuni majburlaydi —
+noaniq bo'lsa, model o'ylab topmasdan "aniq manba topa olmadim" deb javob berishi so'raladi).
 
 | O'zgaruvchi | Tavsif |
 | --- | --- |
-| `PAYME_MERCHANT_ID` | Payme Business kabinetidagi kassa (merchant) ID'si |
-| `PAYME_ACCOUNT_FIELD` | Payme kassa sozlamalarida "account" uchun belgilangan maydon nomi (ixtiyoriy, standart: `category`) |
-| `CLICK_MERCHANT_ID` | Click Merchant Cabinet'dagi merchant ID |
-| `CLICK_SERVICE_ID` | Click'dagi xizmat (service) ID |
+| `GEMINI_API_KEY` | [Google AI Studio](https://aistudio.google.com/apikey)dan olinadigan API kalit |
+| `GEMINI_MODEL` | Ixtiyoriy, standart: `gemini-3.6-flash` |
 
-**Muhim:** bu haqiqiy pul operatsiyasi, shuning uchun quyidagilarni o'zingiz bajarishingiz
-kerak — men (Claude) buni siz uchun sozlab bera olmayman:
-
-1. [Payme Business](https://business.payme.uz) va/yoki [Click Merchant](https://merchant.click.uz)da
-   yuridik shaxs sifatida ro'yxatdan o'ting va kassa (xizmat) oching.
-2. Payme kassa sozlamalarida "to'lov ma'lumotlari" (account) uchun bitta maydon nomini
-   belgilang (masalan `category`) va shuni `PAYME_ACCOUNT_FIELD`ga yozing.
-3. Olingan ID'larni Vercel loyihasida environment variable sifatida qo'shing va qayta deploy
-   qiling.
-4. Click uchun `lib/payment.ts` dagi `buildClickCheckoutUrl` havola shaklini o'z merchant
-   kabinetingizdagi aniq ko'rsatmalarga solishtirib tekshiring — integratsiya turiga qarab
-   parametr nomlari farq qilishi mumkin.
-
-Bu o'zgaruvchilar sozlanmagan bo'lsa, to'lov tugmalari bosilganda aniq xatolik xabari
-ko'rsatiladi ("PAYME_MERCHANT_ID sozlanmagan" va h.k.) — ilovaning qolgan qismi normal
-ishlayveradi.
+**Muhim:** bu — sun'iy intellekt javobi, rasmiy fatvo emas. Sahifada foydalanuvchiga shu haqda
+doimiy ogohlantirish ko'rsatiladi va murakkab masalalarda ulamoga murojaat qilish tavsiya
+etiladi. `GEMINI_API_KEY` sozlanmagan bo'lsa, foydalanuvchiga aniq xatolik xabari ko'rsatiladi.
 
 ## Ma'lum cheklovlar
 

@@ -16,17 +16,17 @@ export default function BottomNav() {
             item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
           const Icon = item.icon;
           return (
-            <li key={item.href} className="flex-1 min-w-[64px]">
+            <li key={item.href} className="flex-1">
               <Link
                 href={item.href}
                 onClick={hapticSelect}
-                className={`flex flex-col items-center justify-center gap-1 py-2 text-[10px] font-medium transition-colors ${
+                className={`flex flex-col items-center justify-center gap-1.5 py-3.5 text-[13px] font-medium transition-colors active:bg-black/5 dark:active:bg-white/10 ${
                   active
                     ? "text-emerald-600 dark:text-emerald-400"
                     : "text-zinc-500 dark:text-zinc-400"
                 }`}
               >
-                <Icon size={20} strokeWidth={active ? 2.4 : 2} />
+                <Icon size={26} strokeWidth={active ? 2.4 : 2} />
                 <span className="leading-none">{item.shortLabel}</span>
               </Link>
             </li>

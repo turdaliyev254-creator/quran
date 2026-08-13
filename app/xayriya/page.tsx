@@ -1,50 +1,48 @@
-import Link from "next/link";
-import { ChevronRight, HandCoins } from "lucide-react";
+import { HandHeart, CreditCard } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
-import xayriya from "@/data/xayriya.json";
-import { XAYRIYA_ICONS } from "@/lib/xayriya";
+import CopyCardNumber from "@/components/CopyCardNumber";
 
 export const metadata = { title: "Xayriya" };
 
 export default function XayriyaPage() {
   return (
     <div className="flex flex-1 flex-col">
-      <PageHeader title="Xayriya" subtitle="Yaxshilik ulashing" backHref="/" />
+      <PageHeader title="Xayriya" subtitle="Savobga sherik bo'ling" backHref="/" />
 
-      <div className="flex flex-col gap-3 p-4">
-        <div className="flex items-start gap-3 rounded-xl bg-emerald-600/10 p-4">
-          <HandCoins size={20} className="mt-0.5 shrink-0 text-emerald-600" />
-          <p className="text-sm leading-relaxed text-[var(--tg-text-color)]">
-            Kategoriyani tanlang, summani belgilang va Payme yoki Click orqali to&apos;lang.
+      <div className="flex flex-col gap-4 p-4">
+        <div className="flex flex-col items-center gap-3 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-800 p-6 text-center text-white">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15">
+            <HandHeart size={26} />
+          </div>
+          <h2 className="text-lg font-semibold">Loyihaning rivojiga hissa qo&apos;shing</h2>
+          <p className="text-sm leading-relaxed text-emerald-50">
+            Ushbu ilovani yaratish, yangi darslar va bo&apos;limlar bilan boyitib borish mehnat
+            va mablag&apos; talab qiladi. Agar loyihaning rivojlanishiga xayriya qilib, savobga
+            sherik bo&apos;lishni istasangiz, quyidagi karta orqali xohlagan miqdorda
+            yubortishingiz mumkin. Har bir xayriyangiz uchun Alloh taolodan ajru savoblar
+            tilaymiz.
           </p>
         </div>
 
-        <ul className="flex flex-col divide-y divide-black/5 overflow-hidden rounded-xl bg-[var(--tg-secondary-bg-color)] dark:divide-white/10">
-          {xayriya.map((c) => {
-            const Icon = XAYRIYA_ICONS[c.icon] ?? HandCoins;
-            return (
-              <li key={c.id}>
-                <Link
-                  href={`/xayriya/${c.id}`}
-                  className="flex items-center gap-3 px-3 py-3 active:bg-black/5 dark:active:bg-white/10"
-                >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-600/10">
-                    <Icon size={18} className="text-emerald-600" />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-sm font-medium text-[var(--tg-text-color)]">
-                      {c.sarlavha}
-                    </span>
-                    <span className="block truncate text-xs text-[var(--tg-hint-color)]">
-                      {c.tavsif}
-                    </span>
-                  </span>
-                  <ChevronRight size={18} className="shrink-0 text-[var(--tg-hint-color)]" />
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="rounded-xl border border-black/5 bg-[var(--tg-secondary-bg-color)] p-4 dark:border-white/5">
+          <p className="text-sm leading-relaxed text-[var(--tg-text-color)]">
+            &ldquo;Sadaqa mol-mulkni kamaytirmaydi.&rdquo;
+          </p>
+          <p className="mt-2 text-xs text-[var(--tg-hint-color)]">Muslim rivoyati</p>
+        </div>
+
+        <div className="flex flex-col gap-3 rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-900 p-5">
+          <div className="flex items-center gap-2 text-white/70">
+            <CreditCard size={16} />
+            <span className="text-xs font-medium">Xayriya kartasi</span>
+          </div>
+          <CopyCardNumber cardNumber="9860 1901 1206 8985" />
+          <p className="text-sm font-medium text-white/90">Izzatbek T.</p>
+        </div>
+
+        <p className="text-center text-xs text-[var(--tg-hint-color)]">
+          Karta raqamiga bosib nusxalab olishingiz mumkin.
+        </p>
       </div>
     </div>
   );

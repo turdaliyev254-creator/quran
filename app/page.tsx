@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Sparkles } from "lucide-react";
 import { NAV_ITEMS, NAV_GROUPS } from "@/lib/nav";
 import hadislar from "@/data/hadislar.json";
 import ruhiyat from "@/data/ruhiyat.json";
@@ -24,6 +24,22 @@ export default function Home() {
           Islom ta&apos;limi ilovasi
         </h1>
       </header>
+
+      <Link
+        href="/ai-qidiruv"
+        className="flex items-center gap-3 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-700 p-4 text-white active:opacity-90"
+      >
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/20">
+          <Sparkles size={20} />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-semibold">AI qidiruv</span>
+          <span className="block text-xs text-emerald-50">
+            Diniy savolingizga Qur&apos;on va sahih hadis asosida javob oling
+          </span>
+        </span>
+        <ChevronRight size={18} className="shrink-0 text-emerald-50" />
+      </Link>
 
       <Link
         href="/ruhiyat"

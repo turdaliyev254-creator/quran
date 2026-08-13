@@ -9,7 +9,7 @@ import {
   HelpCircle,
   Clapperboard,
   HandCoins,
-  Menu,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -53,6 +53,13 @@ export const NAV_ITEMS: NavItem[] = [
     description: "Tanlangan hadislar",
   },
   {
+    href: "/ai-qidiruv",
+    label: "AI qidiruv",
+    shortLabel: "AI",
+    icon: Sparkles,
+    description: "Qur'on va sahih hadis asosida javob",
+  },
+  {
     href: "/arab-tili",
     label: "Arab tili darslari",
     shortLabel: "Arabcha",
@@ -92,23 +99,16 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Xayriya",
     shortLabel: "Xayriya",
     icon: HandCoins,
-    description: "Masjid, shifoxona, maktab va h.k. uchun xayriya",
+    description: "Loyihaning rivojiga hissa qo'shing",
   },
 ];
 
-/** Pastki navigatsiya — scroll shart bo'lmasligi uchun cheklangan sonda. */
+/** Pastki navigatsiya — 4 ta asosiy bo'lim, kattaroq bosish maydoni bilan. */
 export const BOTTOM_NAV_ITEMS: NavItem[] = [
   HOME_ITEM,
   NAV_ITEMS.find((i) => i.href === "/quron")!,
   NAV_ITEMS.find((i) => i.href === "/namoz-vaqtlari")!,
   NAV_ITEMS.find((i) => i.href === "/hadislar")!,
-  {
-    href: "/#bolimlar",
-    label: "Ko'proq",
-    shortLabel: "Ko'proq",
-    icon: Menu,
-    description: "Barcha bo'limlar",
-  },
 ];
 
 export interface NavGroup {
