@@ -1,0 +1,116 @@
+{
+  "siyrat": {
+    "id": "siyrat",
+    "sarlavha": "Ey Rasululloh — Siyrat seriali",
+    "tavsif": "Sun'iy intellekt yordamida tasvirlangan, Payg'ambarimiz Muhammad (s.a.v) hayotidan hikoya qiluvchi serial.",
+    "videolar": [
+      {
+        "id": 1,
+        "title": "Dunyodagi Birinchi AI yordamida Tasvirlangan Siyrat seriali — Rasmiy Treyler — Ey Rasululloh",
+        "videoId": "B2mg4Arqz50"
+      },
+      {
+        "id": 2,
+        "title": "Muhammad s.a.v hayoti haqidagi ilk AI-vizuallashtirilgan serial! - Ey Rasululloh | 1-qism",
+        "videoId": "5Q_fP40fxzI"
+      },
+      {
+        "id": 3,
+        "title": "Ilk Musulmonlar, Tasavvur Qilib Bo'lmas Qiynoqlar! – AI Talqinida – Ey Rasululloh | 2-qism",
+        "videoId": "bT0URXFo9IQ"
+      },
+      {
+        "id": 4,
+        "title": "Umar (r.a.) Payg'ambarni o'ldirishga boradi — Sun'iy intellekt talqinida — Ey Elchi | 3-qism",
+        "videoId": "YWBsRA0Ggx0"
+      },
+      {
+        "id": 5,
+        "title": "Payg'ambarimiz ﷺning mo'jizaviy Isro va Me'roj safarlari! — Ey Elchi | 4-qism",
+        "videoId": "yRZzHl7jPnw"
+      },
+      {
+        "id": 6,
+        "title": "Muhammad s.a.v Makkani tark etishga majbur bo'ldilar - AI orqali vizualizatsiya qilingan - Ey Rasul | 5-qism",
+        "videoId": "rgm8JCy2DUE"
+      },
+      {
+        "id": 7,
+        "title": "Badr Jangi: Abu Jahlning So'nggi So'zlari – AI Talqinida – Ey Rasul | 6-qism",
+        "videoId": "8nYw-OUpDwQ"
+      },
+      {
+        "id": 8,
+        "title": "Uhud Jangi — Birgina Xato G'alabani Tartibsizlikka Aylantirdi! - AI Talqinida - Ey Rasululloh | 7-qism",
+        "videoId": "bFCA3ngBvWA"
+      },
+      {
+        "id": 9,
+        "title": "Xandaq Jangi: Madina Yahudiylari Payg'ambarga Xiyonat Qilishdi! – AI Talqinida–Ey Rasululloh|8-qism",
+        "videoId": "ombni0CXtkk"
+      },
+      {
+        "id": 10,
+        "title": "Xaybarning ulug'vor fathi AI Talqinida – Ali (r.a.)ning qahramonona jangi! – Ey Rasululloh | 9-qism",
+        "videoId": "2spnbVPSURI"
+      },
+      {
+        "id": 11,
+        "title": "Makkaning Ulug'vor Fathi AI Talqinida—Bilolning Ko'z Yoshlarga Sabab Bo'lgan Azoni—Ey Rasululloh|10-qism",
+        "videoId": "xbvJldtLjDk"
+      },
+      {
+        "id": 12,
+        "title": "Payg'ambarimizning Dunyo bilan Vidolashuvi! Uning Sizga Oxirgi So'zlari—Yakuniy qism—Ey Rasululloh",
+        "videoId": "pw6HDKarUX8"
+      }
+    ]
+  },
+  "jannat-onalari": {
+    "id": "jannat-onalari",
+    "sarlavha": "Jannat onalari",
+    "tavsif": "Islom tarixidagi buyuk ayollar — Xadicha, Oysha, Fotima va boshqalar haqidagi AI vizuallashtirilgan qissalar.",
+    "videolar": [
+      {
+        "id": 1,
+        "title": "Xadicha (r.a.) — Alloh O'z salomini yuborgan ayol | Jannat onalari — 1-qism",
+        "videoId": "xZORSZcVwMU"
+      },
+      {
+        "id": 2,
+        "title": "Omina — aytilmagan qissa | Jannat onalari — 2-qism",
+        "videoId": "BUhmhdDTXHs"
+      },
+      {
+        "id": 3,
+        "title": "Maryam (a.s.) — Isoning onasi | Jannat onalari — 3-qism",
+        "videoId": "usSRsx4Bilw"
+      },
+      {
+        "id": 4,
+        "title": "Oysha (r.a.) qissasi | Jannat onalari — 4-qism",
+        "videoId": "Wan3uNQ6aus"
+      },
+      {
+        "id": 5,
+        "title": "Osiyo (r.a.) — Fir'avnning rafiqasi, maxfiy mo'mina | Jannat onalari — 5-qism",
+        "videoId": "PGB5i4TdFo8"
+      },
+      {
+        "id": 6,
+        "title": "Hojar (a.s.) qissasi — Onaning eng og'ir lahzasi | Jannat onalari — 6-qism",
+        "videoId": "6WGzNogeKso"
+      },
+      {
+        "id": 7,
+        "title": "Fotima (r.a.) — Payg'ambarimiz Muhammad ﷺning qizlari | Jannat onalari — 7-qism",
+        "videoId": "Onwep6rWOyU"
+      },
+      {
+        "id": 8,
+        "title": "Havvo (a.s.) — Yer yuzidagi birinchi ayol | Jannat onalari — 8-qism",
+        "videoId": "EpSQoHS7hXk"
+      }
+    ]
+  }
+}

@@ -1,4 +1,5 @@
 import type { Lesson } from "@/lib/lessons";
+import SpeakableWord from "@/components/SpeakableWord";
 
 export default function LessonDetail({ lesson }: { lesson: Lesson }) {
   return (
@@ -28,14 +29,18 @@ export default function LessonDetail({ lesson }: { lesson: Lesson }) {
       )}
 
       {lesson.jadval && (
-        <ul className="flex flex-col divide-y divide-black/5 overflow-hidden rounded-xl bg-[var(--tg-secondary-bg-color)] dark:divide-white/10">
-          {lesson.jadval.map((p, i) => (
-            <li key={i} className="flex items-center justify-between gap-3 px-4 py-3">
-              <span className="text-sm text-[var(--tg-hint-color)]">{p.ozbekcha}</span>
-              <span className="font-arabic text-xl">{p.arabcha}</span>
-            </li>
-          ))}
-        </ul>
+        <>
+          <p className="-mb-2 text-xs text-[var(--tg-hint-color)]">
+            So&apos;zga bosib, talaffuzini eshiting
+          </p>
+          <ul className="flex flex-col divide-y divide-black/5 overflow-hidden rounded-xl bg-[var(--tg-secondary-bg-color)] dark:divide-white/10">
+            {lesson.jadval.map((p, i) => (
+              <li key={i}>
+                <SpeakableWord arabic={p.arabcha} ozbekcha={p.ozbekcha} />
+              </li>
+            ))}
+          </ul>
+        </>
       )}
 
       {lesson.boblar && (

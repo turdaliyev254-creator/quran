@@ -8,7 +8,9 @@ export default function TajvidPage() {
   return (
     <div className="flex flex-1 flex-col">
       <PageHeader title="Tajvid darslari" subtitle={`${lessons.length} ta dars`} backHref="/" />
-      <LessonList lessons={lessons} basePath="/tajvid" />
+      <div className="p-4">
+        <LessonList lessons={lessons} basePath="/tajvid" />
+      </div>
     </div>
   );
 }

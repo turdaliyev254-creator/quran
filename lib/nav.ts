@@ -7,6 +7,9 @@ import {
   Mic2,
   HeartHandshake,
   HelpCircle,
+  Clapperboard,
+  HandCoins,
+  Menu,
   type LucideIcon,
 } from "lucide-react";
 
@@ -18,14 +21,16 @@ export interface NavItem {
   description: string;
 }
 
+export const HOME_ITEM: NavItem = {
+  href: "/",
+  label: "Bosh sahifa",
+  shortLabel: "Bosh",
+  icon: Home,
+  description: "Kunlik oyat, hadis va ruhiyat",
+};
+
 export const NAV_ITEMS: NavItem[] = [
-  {
-    href: "/",
-    label: "Bosh sahifa",
-    shortLabel: "Bosh",
-    icon: Home,
-    description: "Kunlik oyat, hadis va ruhiyat",
-  },
+  HOME_ITEM,
   {
     href: "/quron",
     label: "Qur'on",
@@ -52,7 +57,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Arab tili darslari",
     shortLabel: "Arabcha",
     icon: Languages,
-    description: "Alifbo va asosiy darslar",
+    description: "Alifbo, so'zlar va 129 video dars",
   },
   {
     href: "/tajvid",
@@ -74,5 +79,55 @@ export const NAV_ITEMS: NavItem[] = [
     shortLabel: "Test",
     icon: HelpCircle,
     description: "Bilimingizni sinab ko'ring",
+  },
+  {
+    href: "/islomiy-videolar",
+    label: "Islomiy videolar",
+    shortLabel: "Videolar",
+    icon: Clapperboard,
+    description: "Siyrat seriali va Jannat onalari",
+  },
+  {
+    href: "/xayriya",
+    label: "Xayriya",
+    shortLabel: "Xayriya",
+    icon: HandCoins,
+    description: "Masjid, shifoxona, maktab va h.k. uchun xayriya",
+  },
+];
+
+/** Pastki navigatsiya — scroll shart bo'lmasligi uchun cheklangan sonda. */
+export const BOTTOM_NAV_ITEMS: NavItem[] = [
+  HOME_ITEM,
+  NAV_ITEMS.find((i) => i.href === "/quron")!,
+  NAV_ITEMS.find((i) => i.href === "/namoz-vaqtlari")!,
+  NAV_ITEMS.find((i) => i.href === "/hadislar")!,
+  {
+    href: "/#bolimlar",
+    label: "Ko'proq",
+    shortLabel: "Ko'proq",
+    icon: Menu,
+    description: "Barcha bo'limlar",
+  },
+];
+
+export interface NavGroup {
+  title: string;
+  hrefs: string[];
+}
+
+/** Bosh sahifadagi bo'limlar tugmalarini guruhlash tartibi. */
+export const NAV_GROUPS: NavGroup[] = [
+  {
+    title: "Qur'on va ta'lim",
+    hrefs: ["/quron", "/arab-tili", "/tajvid", "/viktorina"],
+  },
+  {
+    title: "Kundalik hayot",
+    hrefs: ["/namoz-vaqtlari", "/hadislar", "/ruhiyat"],
+  },
+  {
+    title: "Multimedia va yordam",
+    hrefs: ["/islomiy-videolar", "/xayriya"],
   },
 ];

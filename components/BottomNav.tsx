@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV_ITEMS } from "@/lib/nav";
+import { BOTTOM_NAV_ITEMS } from "@/lib/nav";
 import { hapticSelect } from "@/lib/telegram";
 
 export default function BottomNav() {
@@ -10,8 +10,8 @@ export default function BottomNav() {
 
   return (
     <nav className="sticky bottom-0 z-30 border-t border-black/5 bg-[var(--tg-bg-color,#ffffff)]/95 backdrop-blur pb-[env(safe-area-inset-bottom)] dark:border-white/10">
-      <ul className="flex overflow-x-auto no-scrollbar">
-        {NAV_ITEMS.map((item) => {
+      <ul className="flex">
+        {BOTTOM_NAV_ITEMS.map((item) => {
           const active =
             item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
           const Icon = item.icon;

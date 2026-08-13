@@ -1,0 +1,44 @@
+[
+  {
+    "id": "masjidlar",
+    "sarlavha": "Masjidlar uchun xayriya",
+    "tavsif": "Masjidlarni ta'mirlash, jihozlash va ularning kundalik faoliyatini qo'llab-quvvatlash uchun xayriya.",
+    "icon": "landmark"
+  },
+  {
+    "id": "ijtimoiy-himoya",
+    "sarlavha": "Ijtimoiy himoyaga muhtoj odamlarga kommunal xayriya",
+    "tavsif": "Kam ta'minlangan oilalar va yolg'iz keksalarning kommunal to'lovlarini (gaz, svet, suv) qoplashga yordam.",
+    "icon": "home"
+  },
+  {
+    "id": "shifoxonalar",
+    "sarlavha": "Shifoxonalarga kommunal xayriya",
+    "tavsif": "Davlat shifoxonalarining kommunal xarajatlarini qoplashga ko'maklashish.",
+    "icon": "cross"
+  },
+  {
+    "id": "maktablar",
+    "sarlavha": "Maktablarga kommunal xayriya",
+    "tavsif": "Maktablarning isitish, elektr va suv xarajatlarini qoplashga yordam.",
+    "icon": "school"
+  },
+  {
+    "id": "boglchalar",
+    "sarlavha": "Bog'chalarga kommunal xayriya",
+    "tavsif": "Bolalar bog'chalarining kommunal ehtiyojlarini qoplashga ko'maklashish.",
+    "icon": "baby"
+  },
+  {
+    "id": "jonivorlar",
+    "sarlavha": "Jonivorlarni himoya qilish jamiyatiga xayriya",
+    "tavsif": "Egasiz hayvonlarni boqish, davolash va boshpana ta'minlash faoliyatiga yordam.",
+    "icon": "paw"
+  },
+  {
+    "id": "qabristonlar",
+    "sarlavha": "Qabristonlar faoliyati uchun xayriya",
+    "tavsif": "Qabristonlarni obodonlashtirish va parvarish qilish xarajatlariga ko'maklashish.",
+    "icon": "tree"
+  }
+]

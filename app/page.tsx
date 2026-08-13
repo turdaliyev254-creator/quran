@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { NAV_ITEMS } from "@/lib/nav";
+import { NAV_ITEMS, NAV_GROUPS } from "@/lib/nav";
 import hadislar from "@/data/hadislar.json";
 import ruhiyat from "@/data/ruhiyat.json";
 
@@ -15,7 +15,6 @@ export default function Home() {
   const hadithOfDay = hadislar[dayOfYear() % hadislar.length];
   const ruhiyatDay = ((new Date().getDate() - 1) % ruhiyat.length) + 1;
   const ruhiyatOfDay = ruhiyat.find((r) => r.day === ruhiyatDay) ?? ruhiyat[0];
-  const quickLinks = NAV_ITEMS.filter((item) => item.href !== "/");
 
   return (
     <div className="flex flex-1 flex-col gap-5 p-4 pb-6">
@@ -53,29 +52,37 @@ export default function Home() {
         <p className="mt-2 text-xs text-[var(--tg-hint-color)]">{hadithOfDay.manba}</p>
       </Link>
 
-      <section>
-        <h2 className="mb-3 text-sm font-semibold text-[var(--tg-hint-color)]">Bo&apos;limlar</h2>
-        <div className="grid grid-cols-2 gap-3">
-          {quickLinks.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="flex flex-col gap-2 rounded-xl border border-black/5 bg-[var(--tg-secondary-bg-color)] p-4 active:bg-black/5 dark:border-white/5 dark:active:bg-white/10"
-              >
-                <Icon size={22} className="text-emerald-600" />
-                <span className="text-sm font-medium text-[var(--tg-text-color)]">
-                  {item.label}
-                </span>
-                <span className="text-xs leading-snug text-[var(--tg-hint-color)]">
-                  {item.description}
-                </span>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
+      <div id="bolimlar" className="flex flex-col gap-5 scroll-mt-4">
+        {NAV_GROUPS.map((group) => (
+          <section key={group.title}>
+            <h2 className="mb-3 text-sm font-semibold text-[var(--tg-hint-color)]">
+              {group.title}
+            </h2>
+            <div className="grid grid-cols-2 gap-3">
+              {group.hrefs.map((href) => {
+                const item = NAV_ITEMS.find((i) => i.href === href);
+                if (!item) return null;
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="flex flex-col gap-2 rounded-xl border border-black/5 bg-[var(--tg-secondary-bg-color)] p-4 active:bg-black/5 dark:border-white/5 dark:active:bg-white/10"
+                  >
+                    <Icon size={22} className="text-emerald-600" />
+                    <span className="text-sm font-medium text-[var(--tg-text-color)]">
+                      {item.label}
+                    </span>
+                    <span className="text-xs leading-snug text-[var(--tg-hint-color)]">
+                      {item.description}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }

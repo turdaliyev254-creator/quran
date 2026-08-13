@@ -13,6 +13,15 @@ export default function TelegramInit() {
     webApp.expand();
     applyTelegramTheme(webApp);
     webApp.onEvent("themeChanged", () => applyTelegramTheme(webApp));
+
+    const userId = webApp.initDataUnsafe?.user?.id;
+    if (userId) {
+      fetch("/api/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId }),
+      }).catch(() => {});
+    }
   }, []);
 
   return (
