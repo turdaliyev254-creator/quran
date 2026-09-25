@@ -12,10 +12,9 @@ export default function SpeakableWord({
   ozbekcha: string;
 }) {
   const [speaking, setSpeaking] = useState(false);
-  const supported = typeof window !== "undefined" && "speechSynthesis" in window;
 
   function speak() {
-    if (!supported) return;
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
     hapticImpact("light");
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(arabic);
@@ -30,15 +29,18 @@ export default function SpeakableWord({
   return (
     <button
       onClick={speak}
-      className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left active:bg-black/5 dark:active:bg-white/10"
+      className="press tile tile-plain flex w-full items-center justify-between gap-3 rounded-[20px] px-4 py-3.5 text-left"
     >
-      <span className="text-sm text-[var(--tg-hint-color)]">{ozbekcha}</span>
-      <span className="flex items-center gap-2">
-        <span className="font-arabic text-xl">{arabic}</span>
-        <Volume2
-          size={16}
-          className={speaking ? "text-emerald-600" : "text-[var(--tg-hint-color)]"}
-        />
+      <span className="text-[16px] font-semibold">{ozbekcha}</span>
+      <span className="flex items-center gap-3">
+        <span className="font-arabic text-[30px] leading-none text-cobalt dark:text-gold">{arabic}</span>
+        <span
+          className={`flex h-9 w-9 items-center justify-center rounded-full ${
+            speaking ? "bg-turquoise text-ink-fixed" : "bg-surface-2 text-muted"
+          }`}
+        >
+          <Volume2 size={18} />
+        </span>
       </span>
     </button>
   );

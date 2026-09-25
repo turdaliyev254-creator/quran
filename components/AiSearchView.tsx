@@ -1,36 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { Sparkles, Send, Info, Loader2 } from "lucide-react";
+import { Sparkles, ArrowUp, Info, Loader2 } from "lucide-react";
 import { hapticImpact } from "@/lib/telegram";
-
-const markdownComponents = {
-  p: ({ ...props }) => <p className="mb-2 text-sm leading-relaxed last:mb-0" {...props} />,
-  strong: ({ ...props }) => (
-    <strong className="font-semibold text-[var(--tg-text-color)]" {...props} />
-  ),
-  h1: ({ ...props }) => <p className="mb-1 mt-3 text-sm font-semibold first:mt-0" {...props} />,
-  h2: ({ ...props }) => <p className="mb-1 mt-3 text-sm font-semibold first:mt-0" {...props} />,
-  h3: ({ ...props }) => <p className="mb-1 mt-3 text-sm font-semibold first:mt-0" {...props} />,
-  ul: ({ ...props }) => <ul className="mb-2 list-disc space-y-1 pl-5 text-sm" {...props} />,
-  ol: ({ ...props }) => <ol className="mb-2 list-decimal space-y-1 pl-5 text-sm" {...props} />,
-  li: ({ ...props }) => <li className="leading-relaxed" {...props} />,
-  blockquote: ({ ...props }) => (
-    <blockquote
-      className="my-2 border-l-2 border-emerald-500 pl-3 text-sm italic text-[var(--tg-hint-color)]"
-      {...props}
-    />
-  ),
-  hr: () => <hr className="my-3 border-black/10 dark:border-white/10" />,
-};
 
 const EXAMPLES = [
   "Ro'za tutishning shartlari qanday?",
   "Tahoratni buzadigan narsalar nimalar?",
-  "Namozda qiroatni qanday to'g'ri o'qish kerak?",
   "Zakot kimlarga farz?",
+  "Namozda qiroatni qanday to'g'ri o'qish kerak?",
 ];
+
+const markdownComponents = {
+  p: ({ ...props }) => <p className="mb-2 text-[15px] leading-relaxed last:mb-0" {...props} />,
+  strong: ({ ...props }) => <strong className="font-bold" {...props} />,
+  h1: ({ ...props }) => <p className="mb-1 mt-3 text-[15px] font-bold first:mt-0" {...props} />,
+  h2: ({ ...props }) => <p className="mb-1 mt-3 text-[15px] font-bold first:mt-0" {...props} />,
+  h3: ({ ...props }) => <p className="mb-1 mt-3 text-[15px] font-bold first:mt-0" {...props} />,
+  ul: ({ ...props }) => <ul className="mb-2 list-disc space-y-1 pl-5 text-[15px]" {...props} />,
+  ol: ({ ...props }) => <ol className="mb-2 list-decimal space-y-1 pl-5 text-[15px]" {...props} />,
+  li: ({ ...props }) => <li className="leading-relaxed" {...props} />,
+  blockquote: ({ ...props }) => (
+    <blockquote
+      className="my-2 rounded-xl bg-turquoise/20 px-3 py-2 text-[15px] italic"
+      {...props}
+    />
+  ),
+  hr: () => <hr className="my-3 border-line" />,
+};
 
 interface Turn {
   question: string;
@@ -39,10 +37,11 @@ interface Turn {
   loading: boolean;
 }
 
-export default function AiSearchView() {
+export default function AiSearchView({ initialQuestion }: { initialQuestion?: string }) {
   const [question, setQuestion] = useState("");
   const [turns, setTurns] = useState<Turn[]>([]);
   const busy = turns.some((t) => t.loading);
+  const startedRef = useRef(false);
 
   async function ask(q: string) {
     const trimmed = q.trim();
@@ -79,54 +78,63 @@ export default function AiSearchView() {
     }
   }
 
+  // Bosh sahifadagi savol maydonidan kelgan savolni bir marta avtomatik yuboramiz.
+  useEffect(() => {
+    if (initialQuestion && !startedRef.current) {
+      startedRef.current = true;
+      void ask(initialQuestion);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialQuestion]);
+
   return (
     <div className="flex flex-1 flex-col gap-4 p-4">
-      <div className="flex items-start gap-3 rounded-xl bg-emerald-600/10 p-4">
-        <Info size={16} className="mt-0.5 shrink-0 text-emerald-600" />
-        <p className="text-xs leading-relaxed text-[var(--tg-text-color)]">
-          Javoblar sun&apos;iy intellekt (Gemini) tomonidan Qur&apos;on va sahih hadislar
-          asosida beriladi. Bu diniy hukm (fatvo) emas — muhim masalalarda malakali ustoz yoki
-          ulamoga murojaat qiling.
+      <div className="tile tile-gold flex items-start gap-3 rounded-2xl p-3.5">
+        <Info size={18} className="mt-0.5 shrink-0" />
+        <p className="text-[13px] font-medium leading-relaxed">
+          Javoblarni sun&apos;iy intellekt Qur&apos;on va sahih hadislar asosida beradi. Bu fatvo
+          emas — muhim masalada ustoz yoki ulamoga murojaat qiling.
         </p>
       </div>
 
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          ask(question);
+          void ask(question);
         }}
-        className="flex items-center gap-2"
+        className="flex gap-2"
       >
         <input
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          placeholder="Diniy savolingizni yozing..."
+          placeholder="Diniy savolingizni yozing…"
           maxLength={500}
-          className="flex-1 rounded-full border border-black/10 bg-[var(--tg-secondary-bg-color)] px-4 py-2.5 text-sm outline-none focus:border-emerald-500 dark:border-white/10"
+          aria-label="Diniy savol"
+          className="min-w-0 flex-1 rounded-2xl bg-surface px-4 py-3.5 text-[15px] text-ink shadow-[inset_0_0_0_1px_var(--line)] outline-none placeholder:text-muted focus:ring-4 focus:ring-gold"
         />
         <button
           type="submit"
           disabled={busy || !question.trim()}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white disabled:opacity-50"
+          aria-label="Savolni yuborish"
+          className="press tile tile-cobalt flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-2xl disabled:opacity-50"
         >
-          <Send size={16} />
+          <ArrowUp size={24} strokeWidth={2.6} />
         </button>
       </form>
 
       {turns.length === 0 && (
         <div className="flex flex-col gap-3">
-          <div className="flex flex-col items-center gap-2 py-6 text-center">
-            <Sparkles size={28} className="text-emerald-600" />
-            <p className="text-sm text-[var(--tg-hint-color)]">
-              Masalan, quyidagilardan birini so&apos;rab ko&apos;ring
-            </p>
+          <div className="flex items-center gap-2 pt-2 text-muted">
+            <Sparkles size={18} className="text-cobalt" />
+            <p className="text-sm font-semibold">Masalan, so&apos;rab ko&apos;ring</p>
           </div>
-          <div className="flex flex-col gap-2">
-            {EXAMPLES.map((ex) => (
+          <div className="flex flex-col gap-2.5">
+            {EXAMPLES.map((ex, i) => (
               <button
                 key={ex}
                 onClick={() => ask(ex)}
-                className="rounded-xl bg-[var(--tg-secondary-bg-color)] px-4 py-3 text-left text-sm text-[var(--tg-text-color)] active:bg-black/5 dark:active:bg-white/10"
+                className="press tile tile-plain rise rounded-2xl px-4 py-3.5 text-left text-[15px] font-semibold"
+                style={{ "--i": i } as React.CSSProperties}
               >
                 {ex}
               </button>
@@ -135,24 +143,24 @@ export default function AiSearchView() {
         </div>
       )}
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-5">
         {turns.map((t, i) => (
-          <div key={i} className="flex flex-col gap-2">
-            <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-emerald-600 px-4 py-2.5 text-sm text-white">
+          <div key={i} className="flex flex-col gap-2.5">
+            <div className="tile tile-cobalt max-w-[88%] self-end rounded-[20px] rounded-br-md px-4 py-3 text-[15px] font-semibold">
               {t.question}
             </div>
             {t.loading && (
-              <div className="flex items-center gap-2 text-sm text-[var(--tg-hint-color)]">
-                <Loader2 size={16} className="animate-spin" /> Javob tayyorlanmoqda...
+              <div className="flex items-center gap-2 text-sm font-semibold text-muted">
+                <Loader2 size={16} className="animate-spin" /> Javob tayyorlanmoqda…
               </div>
             )}
             {t.answer && (
-              <div className="max-w-[90%] rounded-2xl rounded-tl-sm bg-[var(--tg-secondary-bg-color)] px-4 py-3 text-[var(--tg-text-color)]">
+              <div className="tile tile-plain rise max-w-[94%] rounded-[20px] rounded-bl-md px-4 py-3.5">
                 <ReactMarkdown components={markdownComponents}>{t.answer}</ReactMarkdown>
               </div>
             )}
             {t.error && (
-              <div className="max-w-[90%] rounded-2xl rounded-tl-sm bg-red-500/10 px-4 py-3 text-sm text-red-600">
+              <div className="tile tile-coral max-w-[94%] rounded-[20px] px-4 py-3 text-[15px] font-semibold">
                 {t.error}
               </div>
             )}

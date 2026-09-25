@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PlayCircle } from "lucide-react";
+import { Play } from "lucide-react";
 
 interface VideoLesson {
   id: number;
@@ -7,28 +7,47 @@ interface VideoLesson {
   videoId: string;
 }
 
+const GLAZES = [
+  "bg-turquoise text-ink-fixed",
+  "bg-gold text-ink-fixed",
+  "bg-coral text-ink-fixed",
+  "bg-plum text-white",
+  "bg-cobalt text-white",
+];
+
+/** "Arab tili alifbosi | 1-dars" -> "Arab tili alifbosi" */
+function cleanTitle(title: string) {
+  return title.replace(/\s*\|\s*\d+-dars\s*$/, "").replace(/\s*\d+-dars\s*$/, "");
+}
+
 export default function VideoLessonList({
   videos,
   basePath,
+  numbered = true,
 }: {
   videos: VideoLesson[];
   basePath: string;
+  numbered?: boolean;
 }) {
   return (
-    <ul className="flex flex-col divide-y divide-black/5 overflow-hidden rounded-xl bg-[var(--tg-secondary-bg-color)] dark:divide-white/10">
+    <ul className="flex flex-col gap-2.5">
       {videos.map((v) => (
         <li key={v.id}>
           <Link
             href={`${basePath}/${v.id}`}
-            className="flex items-center gap-3 px-3 py-3 active:bg-black/5 dark:active:bg-white/10"
+            className="press tile tile-plain flex items-center gap-3 rounded-[20px] p-3"
           >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-600/10 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
-              {v.id}
+            <span
+              className={`font-display flex h-12 w-12 shrink-0 items-center justify-center rounded-[16px] text-[15px] font-bold tabular ${
+                GLAZES[(v.id - 1) % GLAZES.length]
+              }`}
+            >
+              {numbered ? v.id : <Play size={18} />}
             </span>
-            <span className="min-w-0 flex-1 truncate text-sm font-medium text-[var(--tg-text-color)]">
-              {v.title}
+            <span className="min-w-0 flex-1 text-[15px] font-bold leading-snug">
+              {cleanTitle(v.title)}
             </span>
-            <PlayCircle size={18} className="shrink-0 text-[var(--tg-hint-color)]" />
+            <Play size={18} className="shrink-0 text-muted" />
           </Link>
         </li>
       ))}

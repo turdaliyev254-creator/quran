@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export default function PageHeader({
   title,
@@ -11,22 +11,23 @@ export default function PageHeader({
   backHref?: string;
 }) {
   return (
-    <header className="sticky top-0 z-20 border-b border-black/5 bg-[var(--tg-bg-color)]/95 px-4 py-3 backdrop-blur dark:border-white/10">
-      <div className="flex items-center gap-2">
+    <header
+      className="sticky top-0 z-20 border-b border-line bg-ground/90 backdrop-blur-md"
+      style={{ paddingTop: "var(--safe-top)" }}
+    >
+      <div className="flex items-center gap-3 px-4 py-3">
         {backHref && (
           <Link
             href={backHref}
-            className="-ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[var(--tg-hint-color)] active:bg-black/5 dark:active:bg-white/10"
             aria-label="Orqaga"
+            className="press tile-plain flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl"
           >
-            <ChevronLeft size={22} />
+            <ArrowLeft size={22} />
           </Link>
         )}
         <div className="min-w-0">
-          <h1 className="truncate text-lg font-semibold text-[var(--tg-text-color)]">{title}</h1>
-          {subtitle && (
-            <p className="truncate text-xs text-[var(--tg-hint-color)]">{subtitle}</p>
-          )}
+          <h1 className="font-display truncate text-lg font-bold leading-tight">{title}</h1>
+          {subtitle && <p className="truncate text-xs text-muted">{subtitle}</p>}
         </div>
       </div>
     </header>

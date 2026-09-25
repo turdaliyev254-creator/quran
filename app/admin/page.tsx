@@ -21,14 +21,14 @@ export default async function AdminPage() {
   ];
 
   return (
-    <div className="flex flex-1 flex-col gap-4 p-4">
+    <div className="flex flex-1 flex-col gap-4 p-4" style={{ paddingTop: "calc(var(--safe-top) + 16px)" }}>
       <div className="flex items-center justify-between">
-        <h1 className="text-lg font-semibold text-[var(--tg-text-color)]">Admin dashboard</h1>
+        <h1 className="font-display text-xl font-extrabold">Admin dashboard</h1>
         <AdminLogoutButton />
       </div>
 
       {!stats.connected && (
-        <div className="rounded-xl bg-red-500/10 p-4 text-sm text-red-600">
+        <div className="tile tile-coral rounded-2xl p-4 text-sm font-semibold">
           Baza ulanmagan. <code>UPSTASH_REDIS_REST_URL</code> va{" "}
           <code>UPSTASH_REDIS_REST_TOKEN</code> muhit o&apos;zgaruvchilarini sozlang.
         </div>
@@ -40,21 +40,21 @@ export default async function AdminPage() {
           return (
             <div
               key={c.label}
-              className="flex items-center gap-3 rounded-xl border border-black/5 bg-[var(--tg-secondary-bg-color)] p-4 dark:border-white/5"
+              className="tile tile-plain flex items-center gap-3 rounded-[20px] p-4"
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-600/10">
-                <Icon size={18} className="text-emerald-600" />
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] bg-cobalt text-white">
+                <Icon size={20} />
               </div>
               <div>
-                <p className="text-xl font-semibold text-[var(--tg-text-color)]">{c.value}</p>
-                <p className="text-xs text-[var(--tg-hint-color)]">{c.label}</p>
+                <p className="font-display text-2xl font-extrabold tabular">{c.value}</p>
+                <p className="text-xs text-muted">{c.label}</p>
               </div>
             </div>
           );
         })}
       </div>
 
-      <p className="text-xs text-[var(--tg-hint-color)]">
+      <p className="text-xs text-muted">
         Statistika Telegram Mini App ichida ochilgan foydalanuvchilar asosida hisoblanadi
         (oddiy brauzerda ochilganlar hisobga olinmaydi).
       </p>

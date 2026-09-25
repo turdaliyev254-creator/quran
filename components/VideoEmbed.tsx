@@ -15,24 +15,22 @@ export default function VideoEmbed({
         href={CHANNEL_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3 rounded-xl border border-dashed border-black/10 bg-[var(--tg-secondary-bg-color)] p-4 text-sm text-[var(--tg-hint-color)] dark:border-white/10"
+        className="tile tile-plain flex items-center gap-3 rounded-2xl p-4 text-sm font-semibold"
       >
-        <SquarePlay size={22} className="shrink-0 text-red-500" />
-        <span>
-          Bu sura uchun video hali ulanmagan. Shayx Alijon Qori rasmiy kanalidan tinglash uchun
-          bosing.
-        </span>
+        <SquarePlay size={24} className="shrink-0 text-coral" />
+        <span>Bu sura uchun video ulanmagan. Rasmiy kanaldan tinglash uchun bosing.</span>
       </a>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-xl bg-black">
+    <div className="tile overflow-hidden rounded-[22px] bg-black">
       <div className="relative aspect-video w-full">
         <iframe
           className="absolute inset-0 h-full w-full"
           src={`https://www.youtube.com/embed/${videoId}`}
-          title={`${title} — Shayx Alijon Qori tilovati`}
+          title={title}
+          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />

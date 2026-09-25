@@ -36,10 +36,10 @@ export default function AdminLoginPage() {
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-6 p-6">
-      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-600/10">
-        <Lock size={24} className="text-emerald-600" />
+      <div className="tile tile-cobalt flex h-14 w-14 items-center justify-center rounded-[18px]">
+        <Lock size={26} className="text-gold" />
       </div>
-      <h1 className="text-lg font-semibold text-[var(--tg-text-color)]">Admin panel</h1>
+      <h1 className="font-display text-xl font-extrabold">Admin panel</h1>
       <form onSubmit={handleSubmit} className="flex w-full max-w-xs flex-col gap-3">
         <input
           type="password"
@@ -47,13 +47,13 @@ export default function AdminLoginPage() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Parol"
           autoFocus
-          className="rounded-xl border border-black/10 bg-[var(--tg-secondary-bg-color)] px-4 py-3 text-sm outline-none focus:border-emerald-500 dark:border-white/10"
+          className="rounded-2xl bg-surface px-4 py-3.5 text-[16px] shadow-[inset_0_0_0_1px_var(--line)] outline-none focus:ring-4 focus:ring-gold"
         />
-        {error && <p className="text-center text-xs text-red-600">{error}</p>}
+        {error && <p className="text-center text-sm font-semibold text-coral">{error}</p>}
         <button
           type="submit"
           disabled={loading || !password}
-          className="rounded-full bg-emerald-600 py-3 text-sm font-medium text-white disabled:opacity-50"
+          className="press tile tile-cobalt min-h-[52px] rounded-2xl font-display text-base font-bold disabled:opacity-50"
         >
           {loading ? "Tekshirilmoqda..." : "Kirish"}
         </button>

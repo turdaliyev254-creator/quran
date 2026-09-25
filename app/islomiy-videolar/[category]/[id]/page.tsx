@@ -30,28 +30,28 @@ export default async function IslomiyVideoPage({
       <div className="flex flex-col gap-4 p-4">
         <VideoEmbed videoId={video.videoId} title={video.title} />
 
-        <div className="flex items-center justify-between gap-3">
+        <div className="grid grid-cols-2 gap-3">
           {prev ? (
             <Link
               href={`/islomiy-videolar/${category}/${prev.id}`}
-              className="flex flex-1 items-center gap-1 rounded-xl bg-[var(--tg-secondary-bg-color)] px-3 py-2.5 text-sm text-[var(--tg-text-color)] active:bg-black/5 dark:active:bg-white/10"
+              className="press tile tile-plain flex min-h-[56px] items-center gap-1 rounded-2xl px-3 text-[15px] font-bold"
             >
-              <ChevronLeft size={16} className="shrink-0 text-[var(--tg-hint-color)]" />
-              <span className="truncate">{prev.id}-qism</span>
+              <ChevronLeft size={20} className="shrink-0 text-muted" />
+              {prev.id}-qism
             </Link>
           ) : (
-            <div className="flex-1" />
+            <span />
           )}
           {next ? (
             <Link
               href={`/islomiy-videolar/${category}/${next.id}`}
-              className="flex flex-1 items-center justify-end gap-1 rounded-xl bg-[var(--tg-secondary-bg-color)] px-3 py-2.5 text-sm text-[var(--tg-text-color)] active:bg-black/5 dark:active:bg-white/10"
+              className="press tile tile-plum flex min-h-[56px] items-center justify-end gap-1 rounded-2xl px-3 text-[15px] font-bold"
             >
-              <span className="truncate">{next.id}-qism</span>
-              <ChevronRight size={16} className="shrink-0 text-[var(--tg-hint-color)]" />
+              {next.id}-qism
+              <ChevronRight size={20} className="shrink-0" />
             </Link>
           ) : (
-            <div className="flex-1" />
+            <span />
           )}
         </div>
       </div>

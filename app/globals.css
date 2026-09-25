@@ -1,55 +1,264 @@
 @import "tailwindcss";
 
+/* Registan majolika: shisha (glaze) plitkalar — kobalt, firuza, oltin, marjon, binafsha */
 :root {
-  --background: #f7faf8;
-  --foreground: #14251d;
-  --brand: #0f8a5f;
-  --brand-dark: #0b6b49;
-  --gold: #c9a24b;
+  --ground: #f1f4ff;
+  --surface: #ffffff;
+  --surface-2: #e4eaff;
+  --ink: #0d1747;
+  --muted: #4b5788;
+  --line: rgba(13, 23, 71, 0.1);
 
-  --tg-bg-color: var(--background);
-  --tg-text-color: var(--foreground);
-  --tg-hint-color: #6b7a72;
-  --tg-link-color: var(--brand);
-  --tg-button-color: var(--brand);
-  --tg-button-text-color: #ffffff;
-  --tg-secondary-bg-color: #eef3ef;
+  --cobalt: #2149f0;
+  --cobalt-deep: #0f2a9e;
+  --turquoise: #20d3c4;
+  --gold: #ffc42e;
+  --coral: #ff6b4a;
+  --plum: #7a3cf0;
+
+  --tile-shadow: 0 14px 28px -14px rgba(15, 42, 158, 0.5);
+  --tile-gloss: inset 0 2px 0 rgba(255, 255, 255, 0.4), inset 0 -3px 0 rgba(0, 0, 0, 0.12);
+
+  --safe-top: max(var(--tg-top, 0px), env(safe-area-inset-top, 0px));
+  --safe-bottom: max(var(--tg-bottom, 0px), env(safe-area-inset-bottom, 0px));
+
+  /* eski komponentlar uchun taxalluslar */
+  --tg-bg-color: var(--ground);
+  --tg-text-color: var(--ink);
+  --tg-hint-color: var(--muted);
+  --tg-secondary-bg-color: var(--surface);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-brand: var(--brand);
-  --color-brand-dark: var(--brand-dark);
-  --color-gold: var(--gold);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-arabic: var(--font-arabic);
+:root[data-theme="dark"] {
+  --ground: #070c2a;
+  --surface: #121a4e;
+  --surface-2: #0b1240;
+  --ink: #f1f4ff;
+  --muted: #a9b4e8;
+  --line: rgba(255, 255, 255, 0.13);
+  --tile-shadow: 0 14px 28px -14px rgba(0, 0, 0, 0.7);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0d1712;
-    --foreground: #eef3ef;
-    --tg-hint-color: #8ba39a;
-    --tg-secondary-bg-color: #16241d;
+  :root:not([data-theme="light"]) {
+    --ground: #070c2a;
+    --surface: #121a4e;
+    --surface-2: #0b1240;
+    --ink: #f1f4ff;
+    --muted: #a9b4e8;
+    --line: rgba(255, 255, 255, 0.13);
+    --tile-shadow: 0 14px 28px -14px rgba(0, 0, 0, 0.7);
   }
 }
 
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-fixed: #0d1747;
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-deep: var(--cobalt-deep);
+  --color-turquoise: var(--turquoise);
+  --color-gold: var(--gold);
+  --color-coral: var(--coral);
+  --color-plum: var(--plum);
+  --font-sans: var(--f-body);
+  --font-display: var(--f-display);
+  --font-arabic: var(--f-arabic);
+  --font-kufi: var(--f-kufi);
+}
+
+html {
+  background: var(--ground);
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
-  background: var(--tg-bg-color, var(--background));
-  color: var(--tg-text-color, var(--foreground));
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--f-body), system-ui, sans-serif;
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--gold);
+  color: #0d1747;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+input,
+textarea {
+  caret-color: var(--cobalt);
 }
 
 .no-scrollbar {
   scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
 .font-arabic {
-  font-family: var(--font-arabic), serif;
+  font-family: var(--f-arabic), serif;
   direction: rtl;
+}
+.font-kufi {
+  font-family: var(--f-kufi), var(--f-arabic), serif;
+  direction: rtl;
+}
+.font-display {
+  font-family: var(--f-display), var(--f-body), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Plitka (glaze) ---------- */
+.tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+  box-shadow: var(--tile-shadow), var(--tile-gloss);
+  isolation: isolate;
+}
+.tile-plain {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 10px 24px -16px rgba(15, 42, 158, 0.45), inset 0 0 0 1px var(--line);
+}
+.tile-cobalt {
+  background: var(--cobalt);
+  color: #fff;
+}
+.tile-turquoise {
+  background: var(--turquoise);
+  color: #0d1747;
+}
+.tile-gold {
+  background: var(--gold);
+  color: #0d1747;
+}
+.tile-coral {
+  background: var(--coral);
+  color: #0d1747;
+}
+.tile-plum {
+  background: var(--plum);
+  color: #fff;
+}
+
+/* Xatam (sakkiz qirrali yulduz) naqshi — plitka ustiga bosilgan naqsh */
+.khatam::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: currentColor;
+  opacity: var(--khatam-opacity, 0.14);
+  -webkit-mask-image: url("/pattern-khatam.svg");
+  mask-image: url("/pattern-khatam.svg");
+  -webkit-mask-size: var(--khatam-size, 56px);
+  mask-size: var(--khatam-size, 56px);
+  pointer-events: none;
+}
+
+.press {
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), filter 140ms;
+}
+.press:active {
+  transform: translateY(2px) scale(0.985);
+  filter: brightness(0.96);
+}
+
+/* Yumshoq paydo bo'lish — bir marta, kontent ko'rinib turadi */
+@keyframes rise {
+  from {
+    opacity: 0.001;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.pop {
+  animation: pop 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-7px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+}
+.shake {
+  animation: shake 360ms ease-out both;
+}
+
+@keyframes confetti-fall {
+  from {
+    transform: translate3d(0, -20px, 0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(var(--dx, 0), 260px, 0) rotate(var(--rot, 540deg));
+    opacity: 0;
+  }
+}
+.confetti {
+  position: absolute;
+  top: 0;
+  width: 9px;
+  height: 14px;
+  border-radius: 3px;
+  animation: confetti-fall 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .pop,
+  .shake,
+  .confetti,
+  .press {
+    animation: none !important;
+    transition: none !important;
+  }
 }

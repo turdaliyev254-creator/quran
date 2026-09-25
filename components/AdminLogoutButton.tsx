@@ -15,7 +15,7 @@ export default function AdminLogoutButton() {
   return (
     <button
       onClick={handleLogout}
-      className="flex items-center gap-1.5 rounded-full bg-[var(--tg-secondary-bg-color)] px-3 py-1.5 text-xs font-medium text-[var(--tg-text-color)]"
+      className="press tile tile-plain flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-bold"
     >
       <LogOut size={14} /> Chiqish
     </button>

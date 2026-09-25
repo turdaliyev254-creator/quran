@@ -5,6 +5,14 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 import type { SurahMeta } from "@/lib/quranApi";
 
+const GLAZES = [
+  "bg-turquoise text-ink-fixed",
+  "bg-gold text-ink-fixed",
+  "bg-coral text-ink-fixed",
+  "bg-plum text-white",
+  "bg-cobalt text-white",
+];
+
 export default function SurahList({ surahs }: { surahs: SurahMeta[] }) {
   const [query, setQuery] = useState("");
 
@@ -15,54 +23,55 @@ export default function SurahList({ surahs }: { surahs: SurahMeta[] }) {
       (s) =>
         s.englishName.toLowerCase().includes(q) ||
         s.englishNameTranslation.toLowerCase().includes(q) ||
-        String(s.number).includes(q)
+        String(s.number) === q
     );
   }, [surahs, query]);
 
   return (
-    <div className="flex flex-col gap-3 p-4">
-      <div className="relative">
+    <div className="flex flex-col gap-4 p-4">
+      <label className="relative block">
         <Search
-          size={16}
-          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--tg-hint-color)]"
+          size={18}
+          className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted"
         />
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Sura nomi yoki raqami bo'yicha qidirish"
-          className="w-full rounded-full border border-black/10 bg-[var(--tg-secondary-bg-color)] py-2.5 pl-9 pr-4 text-sm outline-none focus:border-emerald-500 dark:border-white/10"
+          placeholder="Sura nomi yoki raqami"
+          aria-label="Sura qidirish"
+          className="w-full rounded-2xl bg-surface py-3.5 pl-11 pr-4 text-[15px] shadow-[inset_0_0_0_1px_var(--line)] outline-none placeholder:text-muted focus:ring-4 focus:ring-gold"
         />
-      </div>
+      </label>
 
-      <ul className="flex flex-col divide-y divide-black/5 overflow-hidden rounded-xl bg-[var(--tg-secondary-bg-color)] dark:divide-white/10">
+      <ul className="flex flex-col gap-2.5">
         {filtered.map((s) => (
           <li key={s.number}>
             <Link
               href={`/quron/${s.number}`}
-              className="flex items-center gap-3 px-3 py-3 active:bg-black/5 dark:active:bg-white/10"
+              className="press tile tile-plain flex items-center gap-3 rounded-[20px] p-3"
             >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-600/10 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+              <span
+                className={`font-display flex h-12 w-12 shrink-0 items-center justify-center rounded-[16px] text-base font-bold tabular ${
+                  GLAZES[(s.number - 1) % GLAZES.length]
+                }`}
+              >
                 {s.number}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm font-medium text-[var(--tg-text-color)]">
-                  {s.englishName}
-                </span>
-                <span className="block truncate text-xs text-[var(--tg-hint-color)]">
+                <span className="block truncate text-[16px] font-bold">{s.englishName}</span>
+                <span className="block truncate text-[13px] text-muted">
                   {s.englishNameTranslation} · {s.numberOfAyahs} oyat ·{" "}
                   {s.revelationType === "Meccan" ? "Makkiy" : "Madaniy"}
                 </span>
               </span>
-              <span className="font-arabic shrink-0 text-lg text-[var(--tg-text-color)]">
-                {s.name}
+              <span className="font-kufi shrink-0 text-[26px] leading-none text-cobalt dark:text-gold">
+                {s.name.replace(/^سُورَةُ\s*/, "")}
               </span>
             </Link>
           </li>
         ))}
         {filtered.length === 0 && (
-          <li className="px-3 py-6 text-center text-sm text-[var(--tg-hint-color)]">
-            Hech narsa topilmadi
-          </li>
+          <li className="py-10 text-center text-sm font-semibold text-muted">Hech narsa topilmadi</li>
         )}
       </ul>
     </div>

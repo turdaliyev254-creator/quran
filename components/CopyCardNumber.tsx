@@ -14,21 +14,18 @@ export default function CopyCardNumber({ cardNumber }: { cardNumber: string }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // clipboard unavailable — foydalanuvchi qo'lda ko'chirishi mumkin
+      // clipboard mavjud emas — foydalanuvchi qo'lda ko'chiradi
     }
   }
 
   return (
     <button
       onClick={handleCopy}
-      className="flex w-full items-center justify-between gap-3 rounded-xl bg-white/15 px-4 py-3.5 text-left active:bg-white/20"
+      className="press flex w-full items-center justify-between gap-3 rounded-2xl bg-white/15 px-4 py-4 text-left"
+      aria-label={copied ? "Nusxalandi" : "Karta raqamini nusxalash"}
     >
-      <span className="font-mono text-lg tracking-wide text-white">{cardNumber}</span>
-      {copied ? (
-        <Check size={18} className="shrink-0 text-white" />
-      ) : (
-        <Copy size={18} className="shrink-0 text-white" />
-      )}
+      <span className="font-mono text-[19px] font-semibold tracking-wide tabular">{cardNumber}</span>
+      {copied ? <Check size={22} className="shrink-0 text-gold" /> : <Copy size={22} className="shrink-0" />}
     </button>
   );
 }

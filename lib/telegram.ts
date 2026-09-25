@@ -1,21 +1,21 @@
-export interface TelegramThemeParams {
-  bg_color?: string;
-  text_color?: string;
-  hint_color?: string;
-  link_color?: string;
-  button_color?: string;
-  button_text_color?: string;
-  secondary_bg_color?: string;
+export interface TelegramInsets {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
 }
 
 export interface TelegramWebApp {
   ready: () => void;
   expand: () => void;
+  isVersionAtLeast?: (version: string) => boolean;
+  enableVerticalSwipes?: () => void;
   disableVerticalSwipes?: () => void;
-  setHeaderColor?: (color: string) => void;
-  setBackgroundColor?: (color: string) => void;
-  themeParams: TelegramThemeParams;
   colorScheme: "light" | "dark";
+  isFullscreen?: boolean;
+  initData?: string;
+  safeAreaInset?: TelegramInsets;
+  contentSafeAreaInset?: TelegramInsets;
   initDataUnsafe?: {
     user?: {
       id: number;
@@ -47,25 +47,36 @@ export function getTelegramWebApp(): TelegramWebApp | null {
   return window.Telegram?.WebApp ?? null;
 }
 
-export function applyTelegramTheme(webApp: TelegramWebApp) {
+/**
+ * Telegram to'liq ekran rejimida o'z tugmalarini (yopish, menyu) kontent ustiga qo'yadi.
+ * Xavfsiz zonalarni CSS o'zgaruvchilariga yozamiz: --safe-top, --safe-bottom, ...
+ * `safe` = qurilma zonasi (notch), `content` = Telegram tugmalari egallagan zona; ikkalasi yig'iladi.
+ */
+export function applySafeAreas(webApp: TelegramWebApp) {
   const root = document.documentElement;
-  const theme = webApp.themeParams;
+  const safe = webApp.safeAreaInset ?? { top: 0, bottom: 0, left: 0, right: 0 };
+  const content = webApp.contentSafeAreaInset ?? { top: 0, bottom: 0, left: 0, right: 0 };
 
-  const mapping: Record<string, string | undefined> = {
-    "--tg-bg-color": theme.bg_color,
-    "--tg-text-color": theme.text_color,
-    "--tg-hint-color": theme.hint_color,
-    "--tg-link-color": theme.link_color,
-    "--tg-button-color": theme.button_color,
-    "--tg-button-text-color": theme.button_text_color,
-    "--tg-secondary-bg-color": theme.secondary_bg_color,
-  };
+  root.style.setProperty("--tg-top", `${safe.top + content.top}px`);
+  root.style.setProperty("--tg-bottom", `${safe.bottom + content.bottom}px`);
+  root.style.setProperty("--tg-left", `${safe.left + content.left}px`);
+  root.style.setProperty("--tg-right", `${safe.right + content.right}px`);
+}
 
-  for (const [cssVar, value] of Object.entries(mapping)) {
-    if (value) root.style.setProperty(cssVar, value);
+/** Telegram tashqarisida skript doim "light" deydi, shuning uchun faqat haqiqiy Mini App'da qo'llaymiz. */
+export function applyTelegramColorScheme(webApp: TelegramWebApp) {
+  if (!webApp.initData) return;
+  document.documentElement.dataset.theme = webApp.colorScheme;
+}
+
+/** Pastga surganda ilova yopilib qolmasligi uchun vertikal svaypni o'chiradi (Bot API 7.7+). */
+export function lockVerticalSwipes(webApp: TelegramWebApp) {
+  try {
+    if (webApp.isVersionAtLeast && !webApp.isVersionAtLeast("7.7")) return;
+    webApp.disableVerticalSwipes?.();
+  } catch {
+    // eski Telegram versiyasi — e'tibor bermaymiz
   }
-
-  root.dataset.tgColorScheme = webApp.colorScheme;
 }
 
 export function hapticSelect() {
@@ -74,4 +85,8 @@ export function hapticSelect() {
 
 export function hapticImpact(style: "light" | "medium" | "heavy" | "rigid" | "soft" = "light") {
   getTelegramWebApp()?.HapticFeedback?.impactOccurred(style);
+}
+
+export function hapticNotify(type: "error" | "success" | "warning") {
+  getTelegramWebApp()?.HapticFeedback?.notificationOccurred(type);
 }

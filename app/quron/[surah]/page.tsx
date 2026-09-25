@@ -26,17 +26,15 @@ export default async function SurahPage({
       />
 
       <div className="flex flex-col gap-4 p-4">
-        <div className="rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-800 p-5 text-center text-white">
-          <p className="font-arabic text-3xl">{detail.name}</p>
-          <p className="mt-1 text-xs text-emerald-100">
+        <div className="tile tile-turquoise khatam flex flex-col items-center gap-1 px-5 py-7 text-center">
+          <p className="font-kufi text-[52px] leading-tight">{detail.name}</p>
+          <p className="text-sm font-bold text-ink-fixed/75">
             {detail.revelationType === "Meccan" ? "Makkiy sura" : "Madaniy sura"}
           </p>
         </div>
 
-        <section>
-          <h2 className="mb-2 text-sm font-semibold text-[var(--tg-hint-color)]">
-            Shayx Alijon Qori tilovati
-          </h2>
+        <section className="flex flex-col gap-2.5">
+          <h2 className="font-display text-base font-bold">Shayx Alijon Qori tilovati</h2>
           <VideoEmbed videoId={videoId} title={detail.englishName} />
         </section>
 
@@ -45,19 +43,13 @@ export default async function SurahPage({
             <div
               key={ayah.number}
               id={`ayah-${ayah.numberInSurah}`}
-              className="rounded-xl border border-black/5 bg-[var(--tg-secondary-bg-color)] p-4 transition-colors dark:border-white/5"
+              className="tile tile-plain rounded-[22px] p-4 transition-shadow"
             >
-              <div className="mb-2 flex items-center justify-between">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600/10 text-[10px] font-semibold text-emerald-700 dark:text-emerald-400">
-                  {ayah.numberInSurah}
-                </span>
-              </div>
-              <p className="font-arabic text-right text-2xl leading-loose text-[var(--tg-text-color)]">
-                {ayah.text}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--tg-hint-color)]">
-                {ayah.translation}
-              </p>
+              <span className="font-display flex h-8 min-w-8 items-center justify-center self-start rounded-[10px] bg-gold px-2 text-xs font-bold text-ink-fixed tabular">
+                {ayah.numberInSurah}
+              </span>
+              <p className="font-arabic mt-3 text-right text-[28px] leading-[2.1]">{ayah.text}</p>
+              <p className="mt-3 text-[15px] leading-relaxed text-muted">{ayah.translation}</p>
             </div>
           ))}
         </section>

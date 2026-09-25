@@ -35,7 +35,12 @@ export async function askIslamicQuestion(question: string): Promise<AskResult> {
       body: JSON.stringify({
         contents: [{ role: "user", parts: [{ text: question }] }],
         systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
-        generationConfig: { temperature: 0.3, maxOutputTokens: 4096 },
+        generationConfig: {
+          temperature: 0.3,
+          maxOutputTokens: 4096,
+          // "low": javob ~12 soniyadan ~8 soniyaga tushadi, lekin model hali ham o'ylab, manbani tekshiradi
+          thinkingConfig: { thinkingLevel: "low" },
+        },
       }),
     });
 

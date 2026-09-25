@@ -4,11 +4,9 @@ import {
   Clock,
   ScrollText,
   Languages,
-  Mic2,
-  HeartHandshake,
-  HelpCircle,
+  BookA,
   Clapperboard,
-  HandCoins,
+  HandHeart,
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
@@ -26,108 +24,75 @@ export const HOME_ITEM: NavItem = {
   label: "Bosh sahifa",
   shortLabel: "Bosh",
   icon: Home,
-  description: "Kunlik oyat, hadis va ruhiyat",
+  description: "Savol, Qur'on va so'z o'yini",
 };
 
-export const NAV_ITEMS: NavItem[] = [
-  HOME_ITEM,
-  {
-    href: "/quron",
-    label: "Qur'on",
-    shortLabel: "Qur'on",
-    icon: BookOpen,
-    description: "114 sura, tarjima va tilovat",
-  },
-  {
-    href: "/namoz-vaqtlari",
-    label: "Namoz vaqtlari",
-    shortLabel: "Namoz",
-    icon: Clock,
-    description: "Kunlik namoz vaqtlari",
-  },
-  {
-    href: "/hadislar",
-    label: "Hadislar",
-    shortLabel: "Hadis",
-    icon: ScrollText,
-    description: "Tanlangan hadislar",
-  },
-  {
-    href: "/ai-qidiruv",
-    label: "AI qidiruv",
-    shortLabel: "AI",
-    icon: Sparkles,
-    description: "Qur'on va sahih hadis asosida javob",
-  },
-  {
-    href: "/arab-tili",
-    label: "Arab tili darslari",
-    shortLabel: "Arabcha",
-    icon: Languages,
-    description: "Alifbo, so'zlar va 129 video dars",
-  },
-  {
-    href: "/tajvid",
-    label: "Tajvid darslari",
-    shortLabel: "Tajvid",
-    icon: Mic2,
-    description: "To'g'ri tilovat qoidalari",
-  },
-  {
-    href: "/ruhiyat",
-    label: "Kundalik ruhiyat",
-    shortLabel: "Ruhiyat",
-    icon: HeartHandshake,
-    description: "Har kunlik ibrat va duo",
-  },
-  {
-    href: "/viktorina",
-    label: "Viktorina",
-    shortLabel: "Test",
-    icon: HelpCircle,
-    description: "Bilimingizni sinab ko'ring",
-  },
-  {
-    href: "/islomiy-videolar",
-    label: "Islomiy videolar",
-    shortLabel: "Videolar",
-    icon: Clapperboard,
-    description: "Siyrat seriali va Jannat onalari",
-  },
-  {
-    href: "/xayriya",
-    label: "Xayriya",
-    shortLabel: "Xayriya",
-    icon: HandCoins,
-    description: "Loyihaning rivojiga hissa qo'shing",
-  },
-];
+export const QURAN_ITEM: NavItem = {
+  href: "/quron",
+  label: "Qur'on",
+  shortLabel: "Qur'on",
+  icon: BookOpen,
+  description: "114 sura, tarjima va tilovat",
+};
 
-/** Pastki navigatsiya — 4 ta asosiy bo'lim, kattaroq bosish maydoni bilan. */
-export const BOTTOM_NAV_ITEMS: NavItem[] = [
-  HOME_ITEM,
-  NAV_ITEMS.find((i) => i.href === "/quron")!,
-  NAV_ITEMS.find((i) => i.href === "/namoz-vaqtlari")!,
-  NAV_ITEMS.find((i) => i.href === "/hadislar")!,
-];
+export const AI_ITEM: NavItem = {
+  href: "/ai-qidiruv",
+  label: "AI qidiruv",
+  shortLabel: "AI",
+  icon: Sparkles,
+  description: "Qur'on va sahih hadis asosida javob",
+};
 
-export interface NavGroup {
-  title: string;
-  hrefs: string[];
-}
+export const ARAB_ITEM: NavItem = {
+  href: "/arab-tili",
+  label: "Arab tili",
+  shortLabel: "Arab tili",
+  icon: Languages,
+  description: "Yozma va 129 video dars",
+};
 
-/** Bosh sahifadagi bo'limlar tugmalarini guruhlash tartibi. */
-export const NAV_GROUPS: NavGroup[] = [
-  {
-    title: "Qur'on va ta'lim",
-    hrefs: ["/quron", "/arab-tili", "/tajvid", "/viktorina"],
-  },
-  {
-    title: "Kundalik hayot",
-    hrefs: ["/namoz-vaqtlari", "/hadislar", "/ruhiyat"],
-  },
-  {
-    title: "Multimedia va yordam",
-    hrefs: ["/islomiy-videolar", "/xayriya"],
-  },
-];
+export const LUGAT_ITEM: NavItem = {
+  href: "/lugat",
+  label: "Lug'at",
+  shortLabel: "Lug'at",
+  icon: BookA,
+  description: "Arab–o'zbek lug'ati",
+};
+
+export const NAMOZ_ITEM: NavItem = {
+  href: "/namoz-vaqtlari",
+  label: "Namoz vaqtlari",
+  shortLabel: "Namoz",
+  icon: Clock,
+  description: "Kunlik namoz vaqtlari",
+};
+
+export const HADIS_ITEM: NavItem = {
+  href: "/hadislar",
+  label: "Hadislar",
+  shortLabel: "Hadis",
+  icon: ScrollText,
+  description: "Tanlangan hadislar",
+};
+
+export const VIDEO_ITEM: NavItem = {
+  href: "/islomiy-videolar",
+  label: "Islomiy videolar",
+  shortLabel: "Videolar",
+  icon: Clapperboard,
+  description: "Siyrat seriali va Jannat onalari",
+};
+
+export const XAYRIYA_ITEM: NavItem = {
+  href: "/xayriya",
+  label: "Xayriya",
+  shortLabel: "Xayriya",
+  icon: HandHeart,
+  description: "Loyihaning rivojiga hissa qo'shing",
+};
+
+/** Pastki navigatsiya: markazda AI. */
+export const BOTTOM_NAV_ITEMS: NavItem[] = [HOME_ITEM, QURAN_ITEM, AI_ITEM, ARAB_ITEM, LUGAT_ITEM];
+
+/** Bosh sahifadagi ikkinchi darajali bo'limlar. */
+export const MORE_ITEMS: NavItem[] = [NAMOZ_ITEM, HADIS_ITEM, VIDEO_ITEM, XAYRIYA_ITEM];

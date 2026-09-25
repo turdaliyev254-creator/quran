@@ -39,24 +39,22 @@ export default function HadithBrowser({ hadislar }: { hadislar: Hadith[] }) {
   }
 
   return (
-    <div className="flex flex-col gap-3 p-4">
+    <div className="flex flex-col gap-4 p-4">
       <button
         onClick={pickRandom}
-        className="flex items-center justify-center gap-2 rounded-full bg-emerald-600 py-2.5 text-sm font-medium text-white active:bg-emerald-700"
+        className="press tile tile-plum flex min-h-[56px] items-center justify-center gap-2 rounded-2xl font-display text-base font-bold"
       >
-        <Shuffle size={16} />
+        <Shuffle size={20} />
         Tasodifiy hadis
       </button>
 
-      <div className="flex gap-2 overflow-x-auto no-scrollbar">
+      <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4">
         {categories.map((c) => (
           <button
             key={c}
             onClick={() => setCategory(c)}
-            className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium ${
-              category === c
-                ? "bg-emerald-600 text-white"
-                : "bg-[var(--tg-secondary-bg-color)] text-[var(--tg-hint-color)]"
+            className={`press shrink-0 rounded-full px-4 py-2.5 text-[14px] font-bold ${
+              category === c ? "tile tile-cobalt" : "bg-surface-2 text-muted"
             }`}
           >
             {c}
@@ -69,20 +67,18 @@ export default function HadithBrowser({ hadislar }: { hadislar: Hadith[] }) {
           <div
             key={h.id}
             id={`hadith-${h.id}`}
-            className={`rounded-xl border p-4 transition-colors ${
-              highlightId === h.id
-                ? "border-emerald-500 bg-emerald-500/5"
-                : "border-black/5 bg-[var(--tg-secondary-bg-color)] dark:border-white/5"
+            className={`tile tile-plain rounded-[22px] p-4 transition-shadow ${
+              highlightId === h.id ? "ring-4 ring-gold" : ""
             }`}
           >
-            <span className="mb-2 inline-block rounded-full bg-emerald-600/10 px-2 py-0.5 text-[10px] font-medium text-emerald-700 dark:text-emerald-400">
+            <span className="rounded-full bg-turquoise px-3 py-1 text-xs font-extrabold text-ink-fixed">
               {h.mavzu}
             </span>
             {h.arabcha && (
-              <p className="font-arabic mb-2 text-right text-lg leading-relaxed">{h.arabcha}</p>
+              <p className="font-arabic mt-3 text-right text-[24px] leading-[2]">{h.arabcha}</p>
             )}
-            <p className="text-sm leading-relaxed text-[var(--tg-text-color)]">{h.matn}</p>
-            <p className="mt-2 text-xs text-[var(--tg-hint-color)]">{h.manba}</p>
+            <p className="mt-3 text-[16px] leading-relaxed">{h.matn}</p>
+            <p className="mt-2 text-[13px] font-semibold text-muted">{h.manba}</p>
           </div>
         ))}
       </div>

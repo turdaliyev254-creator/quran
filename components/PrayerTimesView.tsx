@@ -96,14 +96,15 @@ export default function PrayerTimesView() {
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <div className="flex items-center gap-2">
-        <MapPin size={16} className="text-[var(--tg-hint-color)]" />
+      <label className="tile tile-plain flex items-center gap-3 rounded-2xl px-4 py-3">
+        <MapPin size={20} className="shrink-0 text-cobalt dark:text-gold" />
         <select
           value={result?.locationLabel ?? ""}
           onChange={(e) => {
             if (e.target.value) loadByCity(e.target.value);
           }}
-          className="flex-1 rounded-lg border border-black/10 bg-[var(--tg-secondary-bg-color)] px-3 py-2 text-sm dark:border-white/10"
+          aria-label="Shahar"
+          className="w-full bg-transparent text-[16px] font-bold outline-none"
         >
           {result && !UZBEK_CITIES.some((c) => c.name === result.locationLabel) && (
             <option value={result.locationLabel}>{result.locationLabel}</option>
@@ -114,67 +115,56 @@ export default function PrayerTimesView() {
             </option>
           ))}
         </select>
-      </div>
+      </label>
 
       {loading && (
-        <div className="rounded-xl bg-[var(--tg-secondary-bg-color)] p-6 text-center text-sm text-[var(--tg-hint-color)]">
-          Yuklanmoqda...
+        <div className="tile tile-plain rounded-2xl p-6 text-center text-sm font-semibold text-muted">
+          Yuklanmoqda…
         </div>
       )}
 
       {error && !loading && (
-        <div className="rounded-xl bg-red-500/10 p-4 text-center text-sm text-red-600">
-          {error}
-        </div>
+        <div className="tile tile-coral rounded-2xl p-4 text-center text-sm font-semibold">{error}</div>
       )}
 
       {result && !loading && (
         <>
-          <div className="rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-800 p-5 text-center text-white">
-            <p className="text-xs text-emerald-100">{result.gregorianDate}</p>
-            <p className="mt-1 text-sm">{result.hijriDate} h.</p>
+          <div
+            className="tile tile-cobalt khatam rounded-[24px] p-5"
+            style={{ "--khatam-opacity": 0.13 } as React.CSSProperties}
+          >
+            <p className="font-display text-2xl font-extrabold tabular">{result.gregorianDate}</p>
+            <p className="mt-1 text-sm text-white/85">{result.hijriDate} h.</p>
+            {nextPrayer && (
+              <p className="mt-4 text-[15px] font-semibold">
+                Navbatdagi: <span className="text-gold">{PRAYER_LABELS[nextPrayer.key]}</span>{" "}
+                <span className="tabular">{result.timings[nextPrayer.key]}</span>
+              </p>
+            )}
           </div>
 
-          <ul className="flex flex-col divide-y divide-black/5 overflow-hidden rounded-xl bg-[var(--tg-secondary-bg-color)] dark:divide-white/10">
+          <ul className="flex flex-col gap-2.5">
             {(Object.keys(PRAYER_LABELS) as (keyof PrayerTimes)[]).map((key) => {
               const Icon = ICONS[key];
               const active = nextPrayer?.key === key;
               return (
                 <li
                   key={key}
-                  className={`flex items-center gap-3 px-4 py-3 ${
-                    active ? "bg-emerald-600/10" : ""
+                  className={`tile flex items-center gap-3 rounded-[20px] px-4 py-3.5 ${
+                    active ? "tile-gold" : "tile-plain"
                   }`}
                 >
-                  <Icon
-                    size={18}
-                    className={active ? "text-emerald-600" : "text-[var(--tg-hint-color)]"}
-                  />
-                  <span
-                    className={`flex-1 text-sm ${
-                      active ? "font-semibold text-emerald-700 dark:text-emerald-400" : ""
-                    }`}
-                  >
-                    {PRAYER_LABELS[key]}
-                  </span>
-                  <span
-                    className={`font-mono text-sm ${
-                      active ? "font-semibold text-emerald-700 dark:text-emerald-400" : ""
-                    }`}
-                  >
+                  <Icon size={22} className={active ? "" : "text-cobalt dark:text-gold"} />
+                  <span className="flex-1 text-[17px] font-bold">{PRAYER_LABELS[key]}</span>
+                  <span className="font-display text-xl font-bold tabular">
                     {result.timings[key]}
                   </span>
-                  {active && (
-                    <span className="rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-medium text-white">
-                      Navbatdagi
-                    </span>
-                  )}
                 </li>
               );
             })}
           </ul>
 
-          <p className="text-center text-[11px] leading-relaxed text-[var(--tg-hint-color)]">
+          <p className="text-center text-xs leading-relaxed text-muted">
             Hisoblash usuli: Muslim World League. Vaqtlar mahalliy masjid e&apos;lonlaridan
             bir necha daqiqaga farq qilishi mumkin.
           </p>

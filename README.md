@@ -1,8 +1,8 @@
 # Qur'on — Islom ta'limi ilovasi
 
-Telegram Mini App sifatida ishlashi mo'ljallangan Next.js web-sayt. Qur'on tilovati (Shayx
-Alijon Qori videolari bilan), namoz vaqtlari, hadislar, arab tili va tajvid darslari, kundalik
-ruhiyat va viktorina bo'limlarini o'z ichiga oladi.
+Telegram Mini App sifatida ishlashi mo'ljallangan Next.js web-sayt. AI qidiruv (Qur'on va sahih
+hadis asosida), Qur'on tilovati (Shayx Alijon Qori videolari bilan), arab tili darslari, arab–o'zbek
+lug'ati, bosh sahifadagi arab so'zlari o'yini, namoz vaqtlari, hadislar va islomiy videolar.
 
 ## Ishga tushirish
 
@@ -21,13 +21,23 @@ npm run dev
 | Qori tilovati (audio) | alquran.cloud, `ar.alafasy` |
 | Sura videolari | Shayx Alijon Qori rasmiy YouTube kanali ([@AlQuranuz](https://www.youtube.com/@AlQuranuz)), `data/videos.json` |
 | Namoz vaqtlari | [Aladhan API](https://aladhan.com/prayer-times-api) (Muslim World League hisoblash usuli) |
-| Hadislar, Arab tili (yozma darslar), Tajvid, Ruhiyat, Viktorina | `data/*.json` — qo'lda kuratsiya qilingan, kengaytirish mumkin |
+| Hadislar, Arab tili (yozma darslar) | `data/*.json` — qo'lda kuratsiya qilingan, kengaytirish mumkin |
+| Arab–o'zbek lug'ati va so'z o'yini | `data/lugat.json`, `public/oyin-sozlari.json` — Wiktionary (CC BY-SA) asosida, `scripts/build-lugat.py` bilan yig'iladi |
 | Arab tili video darslari (129 ta) | Ibrat Farzandlari YouTube kanali, `data/arab-tili-videolar.json` |
 | Islomiy videolar (Siyrat seriali, Jannat onalari) | Towards Eternity - O'zbek YouTube kanali, `data/islomiy-videolar.json` |
 | AI qidiruv | Gemini API, faqat Qur'on va sahih hadis asosida javob berish uchun cheklangan (pastga qarang) |
 
 Yangi kontent qo'shish uchun tegishli `data/*.json` faylini tahrirlang — sahifalar avtomatik
 yangilanadi.
+
+## Lug'at bazasi
+
+`data/lugat.json` — arab–o'zbek lug'ati (qidiruv `/api/lugat` orqali), `public/oyin-sozlari.json` —
+o'yin uchun qisqa so'zlar. Ikkalasi ochiq litsenziyali [Wiktionary](https://www.wiktionary.org)
+ma'lumotlaridan (kaikki.org orqali) va ilova darslaridan yig'ilgan (CC BY-SA). Qayta yig'ish:
+kaikki.org'dan `pairs_en.jsonl`, `pairs_uz.json`, `ar_lemmas.jsonl` tayyorlab, so'ng
+`python3 scripts/build-lugat.py <ishchi-papka>` ishga tushiriladi. Nashr etilgan lug'atlar
+(an-Na'im va boshqalar) mualliflik huquqi sababli kiritilmagan.
 
 ## Telegram Mini App sifatida ulash
 
@@ -84,5 +94,7 @@ etiladi. `GEMINI_API_KEY` sozlanmagan bo'lsa, foydalanuvchiga aniq xatolik xabar
   topilmadi.
 - Namoz vaqtlari Muslim World League usuli bilan hisoblanadi; mahalliy masjid e'lonlaridan bir
   necha daqiqaga farq qilishi mumkin.
-- Hadis, arab tili, tajvid, ruhiyat va viktorina kontenti boshlang'ich to'plam sifatida
-  tayyorlangan — `data/*.json` orqali istalgancha kengaytirish mumkin.
+- Hadis va arab tili yozma darslari boshlang'ich to'plam sifatida tayyorlangan — `data/*.json`
+  orqali kengaytirish mumkin.
+- Lug'at hajmi Wiktionary'dagi arab–o'zbek juftliklari bilan cheklangan; nashr etilgan katta
+  lug'atlar (an-Na'im va h.k.) mualliflik huquqi sababli kiritilmagan.
