@@ -4,6 +4,8 @@ import VideoEmbed from "@/components/VideoEmbed";
 import SurahAudioPlayer from "@/components/SurahAudioPlayer";
 import { getSurahDetail } from "@/lib/quranApi";
 import videos from "@/data/videos.json";
+import yodlash from "@/data/yodlash.json";
+import YodlashVideos from "@/components/YodlashVideos";
 
 export default async function SurahPage({
   params,
@@ -16,6 +18,7 @@ export default async function SurahPage({
 
   const detail = await getSurahDetail(number);
   const videoId = (videos as Record<string, string | null>)[String(number)] ?? null;
+  const yodlashVideos = (yodlash as Record<string, { title: string; videoId: string }[]>)[String(number)];
 
   return (
     <div className="flex flex-1 flex-col pb-4">
@@ -37,6 +40,10 @@ export default async function SurahPage({
           <h2 className="font-display text-base font-bold">Shayx Alijon Qori tilovati</h2>
           <VideoEmbed videoId={videoId} title={detail.englishName} />
         </section>
+
+        {yodlashVideos && yodlashVideos.length > 0 && (
+          <YodlashVideos videos={yodlashVideos} surahName={detail.englishName} />
+        )}
 
         <section className="flex flex-col gap-3">
           {detail.ayahs.map((ayah) => (
