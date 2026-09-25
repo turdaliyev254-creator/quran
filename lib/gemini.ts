@@ -17,7 +17,7 @@ export interface AskResult {
   error?: string;
 }
 
-export async function askIslamicQuestion(question: string): Promise<AskResult> {
+async function askGemini(question: string): Promise<AskResult> {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return { ok: false, error: "GEMINI_API_KEY sozlanmagan" };
@@ -59,4 +59,46 @@ export async function askIslamicQuestion(question: string): Promise<AskResult> {
   } catch {
     return { ok: false, error: "Tarmoq xatosi, birozdan so'ng qayta urinib ko'ring" };
   }
+}
+
+async function askOpenAI(question: string): Promise<AskResult> {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) return { ok: false, error: "OPENAI_API_KEY sozlanmagan" };
+  const model = process.env.OPENAI_MODEL || "gpt-5.1";
+
+  try {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
+      body: JSON.stringify({
+        model,
+        messages: [
+          { role: "system", content: SYSTEM_INSTRUCTION },
+          { role: "user", content: question },
+        ],
+        max_completion_tokens: 3000,
+        reasoning_effort: "low",
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      return { ok: false, error: `OpenAI xatosi (${res.status}): ${detail.slice(0, 200)}` };
+    }
+    const json = await res.json();
+    const text: string | undefined = json?.choices?.[0]?.message?.content;
+    if (!text) return { ok: false, error: "Javob olinmadi, qayta urinib ko'ring" };
+    return { ok: true, answer: text.trim() };
+  } catch {
+    return { ok: false, error: "Tarmoq xatosi, birozdan so'ng qayta urinib ko'ring" };
+  }
+}
+
+/** OpenAI asosiy; ishlamasa yoki kalit bo'lmasa Gemini'ga o'tadi. */
+export async function askIslamicQuestion(question: string): Promise<AskResult> {
+  if (process.env.OPENAI_API_KEY) {
+    const result = await askOpenAI(question);
+    if (result.ok) return result;
+    if (!process.env.GEMINI_API_KEY) return result;
+  }
+  return askGemini(question);
 }

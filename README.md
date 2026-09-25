@@ -81,8 +81,9 @@ noaniq bo'lsa, model o'ylab topmasdan "aniq manba topa olmadim" deb javob berish
 
 | O'zgaruvchi | Tavsif |
 | --- | --- |
+| `OPENAI_API_KEY` | Asosiy AI (OpenAI). Ixtiyoriy `OPENAI_MODEL`, standart: `gpt-5.1` |
 | `GEMINI_API_KEY` | [Google AI Studio](https://aistudio.google.com/apikey)dan olinadigan API kalit |
-| `GEMINI_MODEL` | Ixtiyoriy, standart: `gemini-3.6-flash` |
+| `GEMINI_MODEL` | Ixtiyoriy, standart: `gemini-3.6-flash` (OpenAI ishlamasa zaxira sifatida) |
 
 **Muhim:** bu — sun'iy intellekt javobi, rasmiy fatvo emas. Sahifada foydalanuvchiga shu haqda
 doimiy ogohlantirish ko'rsatiladi va murakkab masalalarda ulamoga murojaat qilish tavsiya
